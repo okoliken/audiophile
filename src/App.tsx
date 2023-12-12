@@ -1,6 +1,6 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { Home } from "./views/Home";
-import { HeadSet } from "./views/HeadSet";
+import { HeadPhones } from "./views/head-phones";
 import { Layout } from "./layouts/Layout";
 
 const router = createBrowserRouter([
@@ -13,8 +13,8 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/headsets",
-        element: <HeadSet />,
+        path: "/head-phones",
+        element: <HeadPhones />,
       },
     ],
   },
