@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { device } from "../devices";
 
-export const Header = styled.header`
+export const FlexContainer = styled.header`
   display: flex;
   align-items: center;
   border-bottom: 1px solid rgba(76, 76, 76, 0.2);
@@ -66,6 +66,10 @@ export const Header = styled.header`
           line-height: 25px;
           font-size: 13px;
           text-decoration: none;
+          transition:all .2s ease;
+          &:hover {
+            color: rgba(216, 125, 74, 1);
+          }
         }
       }
     }

@@ -1,27 +1,33 @@
-import styled from "styled-components";
+// import { RouterProvider, createBrowserRouter } from "react-router-dom";
+// import { Home } from "./views/Home";
+// import styled from "styled-components";
 import { Navbar } from "./components/navbar/Navbar";
-import { device } from "./components/devices";
-import { Container } from "./components/reuseable-styles/reuse.styled";
+// import { device } from "./components/devices";
+
 import { PageFooter } from "./components/footer/Footer";
 // import { Layout } from "./layouts/Layout";
-const HeroBanner = styled.div`
-  background-color: #101010;
-  min-height: 100%;
-  height: 100%;
 
-  @media (${device.tablet}) {
-    padding: 0px 34px;
-  }
-`;
+// const router = createBrowserRouter([
+//   {
+//     path: "/",
+//     element: <Layout />,
+//     children: [
+//       {
+//         index: true,
+//         element: <Home />,
+//       },
+//     ],
+//   },
+// ]);
+
+
 
 function App() {
   return (
+    // <RouterProvider router={router} />
     <>
-      <HeroBanner>
-        <Container>
-          <Navbar />
-        </Container>
-      </HeroBanner>
+      <Navbar />
+
       <PageFooter />
     </>
   );
