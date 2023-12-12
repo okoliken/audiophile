@@ -1,10 +1,6 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { Home } from "./views/Home";
-// import styled from "styled-components";
-// import { Navbar } from "./components/navbar/Navbar";
-// import { device } from "./components/devices";
-
-// import { PageFooter } from "./components/footer/Footer";
+import { HeadSet } from "./views/HeadSet";
 import { Layout } from "./layouts/Layout";
 
 const router = createBrowserRouter([
@@ -16,21 +12,16 @@ const router = createBrowserRouter([
         index: true,
         element: <Home />,
       },
+      {
+        path: "/headsets",
+        element: <HeadSet />,
+      },
     ],
   },
 ]);
 
-
-
 function App() {
-  return (
-    <RouterProvider router={router} />
-    // <>
-    //   <Navbar />
-
-    //   <PageFooter />
-    // </>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
