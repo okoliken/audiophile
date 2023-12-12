@@ -66,10 +66,14 @@ export const FlexContainer = styled.header`
           line-height: 25px;
           font-size: 13px;
           text-decoration: none;
-          transition:all .2s ease;
+          transition: all 0.2s ease;
           &:hover {
             color: rgba(216, 125, 74, 1);
           }
+        }
+
+        a.active {
+          color: rgba(216, 125, 74, 1);
         }
       }
     }

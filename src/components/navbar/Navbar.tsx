@@ -4,7 +4,7 @@ import { Logo } from "../logo";
 import { Menu } from "../menu";
 import { CartIcon } from "../cart";
 import { routes } from "../index";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { Container } from "../reuseable-styles/reuse.styled";
 import { device } from "../devices";
 
@@ -31,7 +31,12 @@ export const Navbar = () => {
             <ul className="Header__Desktop">
               {routes.map((link, index) => (
                 <li key={index}>
-                  <Link to={link.link}>{link.name}</Link>
+                  <NavLink
+                    className={({ isActive }) => (isActive ? "active" : "")}
+                    to={link.link}
+                  >
+                    {link.name}
+                  </NavLink>
                 </li>
               ))}
             </ul>
