@@ -9,6 +9,73 @@ export const Footer = styled.footer`
   .footer__nav_desktop {
     display: none;
   }
+
+  height: 100%;
+  margin-top: 50px;
+
+  .rectangle {
+    width: 101px;
+    height: 4px;
+    position: absolute;
+    background: #d87d4a;
+    left: 50%;
+    margin-left: -50px;
+    margin-top: -0px;
+  }
+
+  .footer__wrapper {
+    padding: 53px 25px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    p {
+      padding: 18px 0px;
+      font-size: 15px;
+      font-style: normal;
+      text-align: center;
+      font-weight: 500;
+      line-height: 25px;
+      color: #fff;
+      opacity: 0.5;
+    }
+    .footer__nav_mobile {
+      padding: 30px 0px;
+      ul {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 15px 0px;
+      }
+
+      li {
+        color: #fff;
+        letter-spacing: 2px;
+        font-weight: 700;
+        list-style-type: none;
+        line-height: 25px;
+        font-size: 13px;
+      }
+    }
+
+    .section__1 {
+      gap: 30px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-direction: column;
+      span {
+        color: #fff;
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 700;
+        opacity: 0.5;
+        line-height: 25px;
+      }
+    }
+  }
   @media (${device.mobileS}) {
     height: 100%;
     margin-top: 50px;

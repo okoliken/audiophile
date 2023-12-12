@@ -9,10 +9,10 @@ import { Container } from "../reuseable-styles/reuse.styled";
 import { device } from "../devices";
 
 const NavBar = styled.div`
-  background-color: #101010;
-  min-height: 100%;
-  height: 100%;
-
+  background-color: transparent;
+  width: 100%;
+  z-index: 100;
+  position: absolute;
   @media (${device.tablet}) {
     padding: 0px 34px;
   }

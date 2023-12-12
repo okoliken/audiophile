@@ -6,7 +6,7 @@ export const FlexContainer = styled.header`
   align-items: center;
   border-bottom: 1px solid rgba(76, 76, 76, 0.2);
   opacity: border 0.104;
-  background-color: #101010;
+  background-color: transparent;
   justify-content: space-between;
   padding: 22px 20px;
 
