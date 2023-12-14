@@ -207,13 +207,16 @@ export const HeroBanner = styled.div`
   }
 `;
 
-
 export const SubSection = styled.div`
   display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column-reverse;
   padding: 20px;
   gap: 0px;
   img {
     border-radius: 10px;
+    max-width: 100%;
   }
   .subsection__headset_xy_image-tablet {
     display: none;
@@ -249,6 +252,7 @@ export const SubSection = styled.div`
 
   .subsection__headset_xy_image-mobile {
     margin: 30px 0px;
+    
     display: block;
   }
 
