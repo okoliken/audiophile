@@ -12,12 +12,19 @@ export const Container = styled.div`
   }
   @media (${device.laptopL}) {
     margin: 0 auto;
-    max-width: 1240px;
+    max-width: 1200px;
   }
   @media (${device.desktop}) {
     margin: 0 auto;
     max-width: 1650px;
   }
+`;
+
+export const Flex = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0px 6px;
 `;
 
 export const HeroBanner = styled.div`
@@ -252,7 +259,7 @@ export const SubSection = styled.div`
 
   .subsection__headset_xy_image-mobile {
     margin: 30px 0px;
-    
+
     display: block;
   }
 

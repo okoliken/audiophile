@@ -2,6 +2,7 @@ import {
   Container,
   HeroBanner,
 } from "../components/reuseable-styles/reuse.styled";
+import { ProductShowCase } from "../components/product/product-showcase";
 import { Button } from "../components/button/Button";
 
 export const Home = () => {
@@ -23,6 +24,7 @@ export const Home = () => {
           </div>
         </Container>
       </HeroBanner>
+      <ProductShowCase />
     </>
   );
 };
