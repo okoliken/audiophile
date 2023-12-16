@@ -1,144 +1,19 @@
 import {
   Container,
   HeroBanner,
-} from "../components/reuseable-styles/reuse.styled";
+  SpeakerAdvert,
+  XZ7PRODUCT,
+  EarPodsCTA,
+} from "../components/styles/styles.styled";
 import { ProductShowCase } from "../components/product/product-showcase";
 import { Button } from "../components/button/Button";
-import Ring from "../assets/ring.svg";
+
 import Speaker from "../assets/small-speaker.png";
 import SpeakerDesktop from "../assets/speaker-desk.png";
-import styled from "styled-components";
-import { device } from "../components/devices";
-
-const SpeakerAdvert = styled.div`
-  border-radius: 8px;
-  background: #d87d4a;
-  height: 600px;
-  margin: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  padding: 10px;
-  background-image: url(${Ring});
-  background-repeat: no-repeat;
-  background-size: 100%;
-  background-position: top;
-
-  .img-m-t {
-    display: block;
-  }
-
-  .img-d {
-    display: none;
-  }
-  img {
-    height: 207px;
-  }
-  h3 {
-    padding: 15px;
-    color: #fff;
-
-    text-align: center;
-
-    font-size: 36px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 40px; /* 111.111% */
-    letter-spacing: 1.286px;
-    text-transform: uppercase;
-  }
-  p {
-    margin-bottom: 10px;
-    color: #fff;
-    padding: 15px;
-    text-align: center;
-    width: 280px;
-    font-size: 15px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 25px;
-  }
-  h3,
-  p {
-    text-align: center;
-  }
-
-  .flex__items {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-  }
-  @media (${device.mobileM}) {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-  }
-
-  @media (${device.tablet}) {
-    height: 720px;
-    h3 {
-      margin: 15px 0;
-      width: 349px;
-      font-size: 56px;
-      line-height: 58px; /* 103.571% */
-      letter-spacing: 2px;
-      padding: 15px;
-    }
-
-    p {
-      width: 349px;
-    }
-  }
-
-  @media (${device.laptop}) {
-    height: 560px;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    flex-direction: row;
-
-    background-image: url(${Ring});
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-position: top right;
-    .img-m-t {
-      display: none;
-    }
-
-    .img-d {
-      display: block;
-      height: 490px;
-      object-fit: contain;
-      transform: translateY(35px);
-    }
-    h3 {
-      text-align: left;
-      padding: 0;
-      font-size: 56px;
-      margin-bottom: 25px;
-      line-height: 58px;
-    }
-    p {
-      text-align: left;
-      margin-bottom: 25px;
-      padding: 0;
-      opacity: 0.75;
-    }
-    .flex__items {
-      display: flex;
-      align-items: start;
-      justify-content: start;
-      flex-direction: column;
-    }
-
-    button {
-      margin-top: 12px;
-    }
-  }
-`;
+import bitMapMobile from "../assets/bitmap-mobile.png";
+import bitMapTablet from "../assets/bitmap-tab.png";
+import bitMapLaptop from "../assets/bitmap-desk.png";
+import Earpods from "../assets/earpods.png";
 
 export const Home = () => {
   return (
@@ -175,6 +50,54 @@ export const Home = () => {
             <Button buttonType="dark">See Product</Button>
           </div>
         </SpeakerAdvert>
+      </Container>
+
+      <Container>
+        <XZ7PRODUCT>
+          <div>
+            <div>
+              <div className="call-action">
+                <h3>ZX7 SPEAKER</h3>
+                <Button variant="outline" buttonType="dark">
+                  See Product
+                </Button>
+              </div>
+
+              <img
+                className="bit-mobile"
+                src={bitMapMobile}
+                alt="bitMapMobile"
+              />
+            </div>
+            <div>
+              <img
+                className="bit-tablet"
+                src={bitMapTablet}
+                alt="bitMapTablet"
+              />
+            </div>
+            <div>
+              <img
+                className="bit-desktop"
+                src={bitMapLaptop}
+                alt="bitMapLaptop"
+              />
+            </div>
+          </div>
+        </XZ7PRODUCT>
+
+        <EarPodsCTA>
+          <img src={Earpods} alt="Earpods" />
+
+          <div className="cta-container">
+            <div className="cta-action">
+              <h3>ZX7 SPEAKER</h3>
+              <Button variant="outline" buttonType="dark">
+                See Product
+              </Button>
+            </div>
+          </div>
+        </EarPodsCTA>
       </Container>
     </>
   );

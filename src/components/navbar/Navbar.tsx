@@ -5,7 +5,7 @@ import { Menu } from "../menu";
 import { CartIcon } from "../cart";
 import { routes } from "../index";
 import { NavLink } from "react-router-dom";
-import { Container } from "../reuseable-styles/reuse.styled";
+import { Container } from "../styles/styles.styled";
 import { device } from "../devices";
 
 const NavBar = styled.div`

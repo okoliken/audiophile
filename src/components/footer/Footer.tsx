@@ -1,6 +1,6 @@
 import { Footer } from "./footer.styled";
 import { Logo } from "../logo";
-import { Container } from "../reuseable-styles/reuse.styled";
+import { Container } from "../styles/styles.styled";
 import { routes } from "../index";
 
 export const PageFooter = () => {

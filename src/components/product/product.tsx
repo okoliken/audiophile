@@ -1,6 +1,6 @@
 import Headset from "../../assets/headset.png";
 import Earpod from "../../assets/earpod.png";
-import { Flex } from "../reuseable-styles/reuse.styled";
+import { Flex } from "../styles/styles.styled";
 import Speaker from "../../assets/small-speaker.png";
 import { Link } from "react-router-dom";
 export const Product = () => {
@@ -29,9 +29,7 @@ export const Product = () => {
       {products.map((product, index) => (
         <div className="product__xy" key={index}>
           <img src={product.image} alt={product.title} />
-          <div className="overlay">
-            
-          </div>
+          <div className="overlay"></div>
           <div className="product__content">
             <h3>{product.title}</h3>
             <Flex>

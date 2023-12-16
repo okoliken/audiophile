@@ -1,6 +1,9 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-export const BaseButton = styled.button<{ $buttonType: string }>`
+export const BaseButton = styled.button<{
+  $buttonType: string;
+  $variant: string;
+}>`
   font-size: 0.8125em;
   color: #fff;
   padding: 0.25em 1em;
@@ -37,5 +40,18 @@ export const BaseButton = styled.button<{ $buttonType: string }>`
     border: 3px solid
       ${(props) => (props.$buttonType === "primary" ? "#d87d4a" : "#000")};
   }
+
+  ${(props) =>
+    props.$variant === "outline" &&
+    css`
+      background: transparent;
+      color: #000;
+      transition: all 0.2s ease-in-out;
+
+      &:hover {
+        background-color: black;
+        color: #fff;
+      }
+    `};
 `;
 // ${props => props.$primary ? "#BF4F74" : "white"};

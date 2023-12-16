@@ -5,10 +5,7 @@ import { Outlet } from "react-router-dom";
 import HeadSet from "../assets/Bitmap-headset-mobile.png";
 import HeadSetDesktop from "../assets/Bitmap-headset.png";
 import HeadSetTablet from "../assets/Bitmap-headset-tablet.png";
-import {
-  Container,
-  SubSection,
-} from "../components/reuseable-styles/reuse.styled";
+import { Container, SubSection } from "../components/styles/styles.styled";
 
 export const Layout = () => {
   return (
