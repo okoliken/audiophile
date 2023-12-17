@@ -7,7 +7,7 @@ import {
 } from "../components/styles/styles.styled";
 import { ProductShowCase } from "../components/product/product-showcase";
 import { Button } from "../components/button/Button";
-
+import { account } from "../lib/appwrite";
 import Speaker from "../assets/small-speaker.png";
 import SpeakerDesktop from "../assets/speaker-desk.png";
 import bitMapMobile from "../assets/bitmap-mobile.png";
@@ -16,6 +16,13 @@ import bitMapLaptop from "../assets/bitmap-desk.png";
 import Earpods from "../assets/earpods.png";
 
 export const Home = () => {
+  const handleLogin = () => {
+    account.createOAuth2Session(
+      "google",
+      "http://audiophile-tawny-tau.vercel.app",
+      "http://audiophile-tawny-tau.vercel.app/"
+    );
+  };
   return (
     <>
       <HeroBanner>
@@ -47,7 +54,9 @@ export const Home = () => {
               Upgrade to premium speakers that are phenomenally built to deliver
               truly remarkable sound.
             </p>
-            <Button buttonType="dark">See Product</Button>
+            <Button onClick={() => handleLogin()} buttonType="dark">
+              See Product
+            </Button>
           </div>
         </SpeakerAdvert>
       </Container>

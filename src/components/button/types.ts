@@ -4,6 +4,7 @@ export interface ButtonProps {
   children: React.ReactNode;
   loading?: boolean;
   buttonType: ButtonType;
-  variant?:Variant
+  variant?:Variant;
+  onClick?: () => void
   // Add other props as needed
 }
