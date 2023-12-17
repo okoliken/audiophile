@@ -19,8 +19,6 @@ export const Home = () => {
   const handleLogin = () => {
     account.createOAuth2Session(
       "google",
-      "http://audiophile-tawny-tau.vercel.app",
-      "http://audiophile-tawny-tau.vercel.app/"
     );
   };
   return (
