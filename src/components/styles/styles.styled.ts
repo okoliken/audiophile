@@ -753,7 +753,7 @@ export const EarPodsCTA = styled.div`
       border-radius: 8px;
       background: #f1f1f1;
       max-width: 540px;
-      width:100%;
+      width: 100%;
       height: 100%;
       padding: 30px;
 
@@ -775,7 +775,8 @@ export const EarPodsCTA = styled.div`
   }
   @media (${device.laptop}) {
     grid-template-columns: repeat(2, 1fr);
-    gap: 0 25px;
+    gap: 0 35px;
+    padding: 0px;
     img {
       max-width: 731.539px;
       border-radius: 8px;
@@ -785,8 +786,7 @@ export const EarPodsCTA = styled.div`
     div.cta-container {
       border-radius: 8px;
       background: #f1f1f1;
-      max-width: 540px;
-      width:100%;
+      width: 100%;
       height: 100%;
       padding: 30px;
 

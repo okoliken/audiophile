@@ -209,12 +209,40 @@ export const Footer = styled.footer`
           gap: 0px 45px;
 
           li {
-            color: #fff;
-            letter-spacing: 2px;
-            font-weight: 700;
-            list-style-type: none;
-            line-height: 25px;
-            font-size: 13px;
+            a {
+              color: #fff;
+              letter-spacing: 2px;
+              font-weight: 700;
+              list-style-type: none;
+              line-height: 25px;
+              font-size: 13px;
+              text-decoration: none;
+              transition: all 0.2s ease;
+              &:hover {
+                color: rgba(216, 125, 74, 1);
+              }
+            }
+
+            a.active {
+              color: rgba(216, 125, 74, 1);
+            }
+          }
+        }
+
+        #socials {
+          width: 100%;
+          display: flex;
+          align-items: end;
+          justify-content: end;
+          gap: 0 20px;
+          transform: translateY(90px);
+
+          svg {
+            cursor: pointer;
+            transition: all 0.2s ease-in;
+            :hover {
+              fill: rgba(216, 125, 74, 1);
+            }
           }
         }
       }

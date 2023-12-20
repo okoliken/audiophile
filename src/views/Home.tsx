@@ -19,6 +19,8 @@ export const Home = () => {
   const handleLogin = () => {
     account.createOAuth2Session(
       "google",
+      "https://cloud.appwrite.io/v1/account/sessions/oauth2/callback/google/657f5227e500de872650",
+      "https://audiophile-tawny-tau.vercel.app/"
     );
   };
   return (
@@ -109,3 +111,12 @@ export const Home = () => {
     </>
   );
 };
+
+
+// divider color
+// divider dropdown
+// slider and carosel widget with better images
+// slider preview
+// accordion
+// countdown widget
+// blog post preview - land scape  and protrait
