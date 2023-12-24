@@ -1,6 +1,6 @@
 import Headset from "../../assets/headset.png";
 import Earpod from "../../assets/earpod.png";
-import { Flex } from "../styles/styles.styled";
+import { Flex } from "../../styles/styles.styled";
 import Speaker from "../../assets/small-speaker.png";
 import { Link } from "react-router-dom";
 export const Product = () => {

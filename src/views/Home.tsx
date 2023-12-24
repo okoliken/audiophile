@@ -4,10 +4,10 @@ import {
   SpeakerAdvert,
   XZ7PRODUCT,
   EarPodsCTA,
-} from "../components/styles/styles.styled";
+} from "../styles/styles.styled";
+import { MarginBox } from "../styles/reuseables.styled";
 import { ProductShowCase } from "../components/product/product-showcase";
 import { Button } from "../components/button/Button";
-import { account } from "../lib/appwrite";
 import Speaker from "../assets/small-speaker.png";
 import SpeakerDesktop from "../assets/speaker-desk.png";
 import bitMapMobile from "../assets/bitmap-mobile.png";
@@ -16,13 +16,6 @@ import bitMapLaptop from "../assets/bitmap-desk.png";
 import Earpods from "../assets/earpods.png";
 
 export const Home = () => {
-  const handleLogin = () => {
-    account.createOAuth2Session(
-      "google",
-      "https://cloud.appwrite.io/v1/account/sessions/oauth2/callback/google/657f5227e500de872650",
-      "https://audiophile-tawny-tau.vercel.app/"
-    );
-  };
   return (
     <>
       <HeroBanner>
@@ -41,7 +34,9 @@ export const Home = () => {
           </div>
         </Container>
       </HeroBanner>
-      <ProductShowCase />
+      <MarginBox>
+        <ProductShowCase />
+      </MarginBox>
 
       <Container>
         <SpeakerAdvert>
@@ -54,9 +49,7 @@ export const Home = () => {
               Upgrade to premium speakers that are phenomenally built to deliver
               truly remarkable sound.
             </p>
-            <Button onClick={() => handleLogin()} buttonType="dark">
-              See Product
-            </Button>
+            <Button buttonType="dark">See Product</Button>
           </div>
         </SpeakerAdvert>
       </Container>
@@ -111,7 +104,6 @@ export const Home = () => {
     </>
   );
 };
-
 
 // divider color
 // divider dropdown

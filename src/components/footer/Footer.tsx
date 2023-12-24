@@ -1,6 +1,6 @@
 import { Footer } from "./footer.styled";
 import { Logo } from "../logo";
-import { Container } from "../styles/styles.styled";
+import { Container } from "../../styles/styles.styled";
 import { routes } from "../index";
 import { NavLink } from "react-router-dom";
 

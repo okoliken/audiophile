@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { device } from "../devices";
-import BannerHero from "../../assets/banner-hero.png";
-import BannerHeroMobile from "../../assets/banner-hero-mobile.png";
-import Ring from "../../assets/ring.svg";
+import { device } from "../components/devices";
+import BannerHero from "../assets/banner-hero.png";
+import BannerHeroMobile from "../assets/banner-hero-mobile.png";
+import Ring from "../assets/ring.svg";
 export const Container = styled.div`
   max-width: 100%;
   position: relative;

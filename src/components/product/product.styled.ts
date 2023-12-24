@@ -3,7 +3,7 @@ import { device } from "../devices";
 
 export const ProductContainer = styled.div`
   display: grid;
-  margin: 48px 0px;
+
   grid-template-columns: repeat(1, 1fr);
   gap: 78px 0px;
   width: 100%;
@@ -26,7 +26,7 @@ export const ProductContainer = styled.div`
     background: #f1f1f1;
   }
   @media (${device.mobileS}) {
-    margin: 108px 0px;
+   
     gap: 108px 0px;
     grid-template-columns: repeat(1, 1fr);
     img {
@@ -79,7 +79,7 @@ export const ProductContainer = styled.div`
 
   @media (${device.laptop}) {
     grid-template-columns: repeat(3, 1fr);
-    margin: 148px 0px;
+    
 
     .product__xy {
       width: 350px;
