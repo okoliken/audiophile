@@ -1,13 +1,17 @@
 import styled, { css } from "styled-components";
 
+const defaultSize = "160px";
+const largeSize = "220px";
+
 export const BaseButton = styled.button<{
   $buttonType: string;
   $variant: string;
+  $size: string;
 }>`
   font-size: 0.8125em;
   color: #fff;
   padding: 0.25em 1em;
-  width: 160px;
+  width: ${(props) => (props.$size === "default" ? defaultSize : largeSize)};
   height: 48px;
   letter-spacing: 1px;
   text-transform: uppercase;

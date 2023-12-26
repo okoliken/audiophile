@@ -1,8 +1,12 @@
-export const CartIcon = () => {
+type CartProps = {
+  toggleCarMenu: () => void;
+};
 
-  
+export const CartIcon = ({ toggleCarMenu }: CartProps) => {
   return (
     <svg
+      onClick={toggleCarMenu}
+      id="cartIcon"
       xmlns="http://www.w3.org/2000/svg"
       width="23"
       height="20"

@@ -39,6 +39,17 @@ export const HeroSection = styled.div`
 
 export const ProductDisplay = styled.div`
   display: grid;
+  grid-template-columns: repeat(1, 1fr);
+
+  @media (${device.mobileS}) {
+    
+  }
+  @media (${device.tablet}) {
+    
+  }
+  @media (${device.laptop}) {
+    
+  }
 `;
 
 export const Container = styled.div`

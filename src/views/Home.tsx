@@ -30,7 +30,7 @@ export const Home = () => {
               made for the passionate music enthusiast.
             </p>
 
-            <Button buttonType="primary">See Product</Button>
+            <Button buttonType={"primary"}>See Product</Button>
           </div>
         </Container>
       </HeroBanner>

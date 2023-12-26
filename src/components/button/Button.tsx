@@ -7,6 +7,7 @@ export const Button = ({
   buttonType,
   variant = "default",
   onClick,
+  size = "default",
 }: ButtonProps) => {
   return (
     <BaseButton
@@ -15,6 +16,7 @@ export const Button = ({
       $variant={variant}
       disabled={loading}
       onClick={onClick}
+      $size={size}
     >
       {loading ? "Loading..." : children}
     </BaseButton>

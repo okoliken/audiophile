@@ -2,11 +2,14 @@ import { FlexContainer } from "./navbar.styled";
 import styled from "styled-components";
 import { Logo } from "../logo";
 import { Menu } from "../menu";
-import { CartIcon } from "../cart";
+import { CartIcon } from "../cart/cartIcon";
 import { routes } from "../index";
 import { NavLink } from "react-router-dom";
 import { Container } from "../../styles/styles.styled";
 import { device } from "../devices";
+import { Cart } from "../cart/cart";
+
+import { useState } from "react";
 
 const NavBar = styled.div`
   background-color: transparent;
@@ -16,9 +19,18 @@ const NavBar = styled.div`
   @media (${device.tablet}) {
     padding: 0px 34px;
   }
+
+  @media (${device.laptop}) {
+  }
 `;
 
 export const Navbar = () => {
+  const [cartMenu, openCartMenu] = useState(false);
+
+  const toggleCarMenu = () => {
+    openCartMenu(!cartMenu);
+  };
+
   return (
     <>
       <NavBar>
@@ -40,10 +52,12 @@ export const Navbar = () => {
                 </li>
               ))}
             </ul>
-            <CartIcon />
+            <CartIcon toggleCarMenu={toggleCarMenu} />
           </FlexContainer>
         </Container>
       </NavBar>
+
+      {cartMenu ? <Cart /> : <></>}
     </>
   );
 };

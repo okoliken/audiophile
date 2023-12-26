@@ -5,6 +5,7 @@ export interface ButtonProps {
   loading?: boolean;
   buttonType: ButtonType;
   variant?:Variant;
+  size?:string;
   onClick?: () => void
   // Add other props as needed
 }

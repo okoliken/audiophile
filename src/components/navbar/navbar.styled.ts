@@ -46,6 +46,10 @@ export const FlexContainer = styled.header`
       display: none;
     }
 
+    svg#cartIcon {
+      cursor: pointer;
+    }
+
     .header__menu {
       width: inherit;
       svg {
