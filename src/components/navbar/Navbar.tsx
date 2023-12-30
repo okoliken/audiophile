@@ -25,10 +25,15 @@ const NavBar = styled.div`
 `;
 
 export const Navbar = () => {
-  const [cartMenu, openCartMenu] = useState(false);
+  const [cartMenu, openCart] = useState(false);
 
-  const toggleCarMenu = () => {
-    openCartMenu(!cartMenu);
+  const openCartMenu = () => {
+    openCart(true);
+    
+  };
+
+  const closeCartModal = () => {
+    openCart(false);
   };
 
   return (
@@ -52,12 +57,12 @@ export const Navbar = () => {
                 </li>
               ))}
             </ul>
-            <CartIcon toggleCarMenu={toggleCarMenu} />
+            <CartIcon openCartMenu={openCartMenu} />
           </FlexContainer>
         </Container>
       </NavBar>
 
-      {cartMenu ? <Cart /> : <></>}
+      <Cart isOpen={cartMenu} onClose={closeCartModal} />
     </>
   );
 };

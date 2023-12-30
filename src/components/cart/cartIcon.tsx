@@ -1,11 +1,11 @@
 type CartProps = {
-  toggleCarMenu: () => void;
+  openCartMenu: () => void;
 };
 
-export const CartIcon = ({ toggleCarMenu }: CartProps) => {
+export const CartIcon = ({ openCartMenu }: CartProps) => {
   return (
     <svg
-      onClick={toggleCarMenu}
+      onClick={openCartMenu}
       id="cartIcon"
       xmlns="http://www.w3.org/2000/svg"
       width="23"

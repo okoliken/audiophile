@@ -7,13 +7,46 @@ import Earphones from "../assets/earphones.png";
 import Speaker1 from "../assets/speaker-desk.png";
 import Speaker2 from "../assets/speaker2.png";
 
-export const headsets = [
+import Image from "../assets/details/image.png";
+import Image2 from "../assets/details/image2.png";
+import Image3 from "../assets/details/image3.png";
+
+import { ProductPrototype } from "../utils/types";
+
+export const headsets: ProductPrototype[] = [
   {
     subTitle: "NEW PRODUCT",
     title: "XX99 Mark II Headphones",
     description:
       "As the gold standard for headphones, the classic XX99 Mark I offers detailed and accurate audio reproduction for audiophiles, mixing engineers, and music aficionados alike in studios and on the go.",
     image: Headset2,
+    slug: "xx99-mark-ii",
+    details: {
+      price: 4500,
+      feature:
+        "Connect via Bluetooth or nearly any wired source. This speaker features optical, digital coaxial, USB Type-B, stereo RCA, and stereo XLR inputs, allowing you to have up to five wired source devices connected for easy switching. Improved bluetooth technology offers near lossless audio quality at up to 328ft (100m). Discover clear, more natural sounding highs than the competition with ZX9’s signature planar diaphragm tweeter. Equally important is its powerful room-shaking bass courtesy of a 6.5” aluminum alloy bass unit. You’ll be able to enjoy equal sound quality whether in a large room or small den. Furthermore, you will experience new sensations from old songs since it can respond to even the subtle waveforms.",
+      inBox: [
+        { x: "1x", y: "Headphone Unit" },
+        { x: "2x", y: "Replacement Earcups" },
+        { x: "1x", y: "User Manual" },
+        { x: "1x", y: "3.5mm 5m Audio Cable" },
+      ],
+      images: [Image, Image2, Image3],
+      similar_products: [
+        {
+          img: Headset2,
+          title: "XX99 MARK I",
+        },
+        {
+          img: Headset1,
+          title: "XX99 MARK I",
+        },
+        {
+          img: Headset3,
+          title: "XX99 MARK I",
+        },
+      ],
+    },
   },
   {
     subTitle: null,
@@ -21,14 +54,67 @@ export const headsets = [
     description:
       "The new XX99 Mark II headphones is the pinnacle of pristine audio. It redefines your premium headphone experience by reproducing the balanced depth and precision of studio-quality sound.",
     image: Headset1,
+    slug: "xx99-mark-i",
+    details: {
+      price: 4500,
+      feature:
+        "Connect via Bluetooth or nearly any wired source. This speaker features optical, digital coaxial, USB Type-B, stereo RCA, and stereo XLR inputs, allowing you to have up to five wired source devices connected for easy switching. Improved bluetooth technology offers near lossless audio quality at up to 328ft (100m). Discover clear, more natural sounding highs than the competition with ZX9’s signature planar diaphragm tweeter. Equally important is its powerful room-shaking bass courtesy of a 6.5” aluminum alloy bass unit. You’ll be able to enjoy equal sound quality whether in a large room or small den. Furthermore, you will experience new sensations from old songs since it can respond to even the subtle waveforms.",
+      inBox: [
+        { x: "1x", y: "Headphone Unit" },
+        { x: "2x", y: "Replacement Earcups" },
+        { x: "1x", y: "User Manual" },
+        { x: "1x", y: "3.5mm 5m Audio Cable" },
+      ],
+      images: [Image, Image2, Image3],
+      similar_products: [
+        {
+          img: Headset2,
+          title: "XX99 MARK I",
+        },
+        {
+          img: Headset1,
+          title: "XX99 MARK I",
+        },
+        {
+          img: Headset3,
+          title: "XX99 MARK I",
+        },
+      ],
+    },
   },
-
   {
     subTitle: null,
     title: "XX59 Headphones",
     description:
       "Enjoy your audio almost anywhere and customize it to your specific tastes with the XX59 headphones. The stylish yet durable versatile wireless headset is a brilliant companion at home or on the move.",
     image: Headset3,
+    slug: "xx99-headphones",
+    details: {
+      price: 4500,
+      feature:
+        "Connect via Bluetooth or nearly any wired source. This speaker features optical, digital coaxial, USB Type-B, stereo RCA, and stereo XLR inputs, allowing you to have up to five wired source devices connected for easy switching. Improved bluetooth technology offers near lossless audio quality at up to 328ft (100m). Discover clear, more natural sounding highs than the competition with ZX9’s signature planar diaphragm tweeter. Equally important is its powerful room-shaking bass courtesy of a 6.5” aluminum alloy bass unit. You’ll be able to enjoy equal sound quality whether in a large room or small den. Furthermore, you will experience new sensations from old songs since it can respond to even the subtle waveforms.",
+      inBox: [
+        { x: "1x", y: "Headphone Unit" },
+        { x: "2x", y: "Replacement Earcups" },
+        { x: "1x", y: "User Manual" },
+        { x: "1x", y: "3.5mm 5m Audio Cable" },
+      ],
+      images: [Image, Image2, Image3],
+      similar_products: [
+        {
+          img: Headset2,
+          title: "XX99 MARK I",
+        },
+        {
+          img: Headset1,
+          title: "XX99 MARK I",
+        },
+        {
+          img: Headset3,
+          title: "XX99 MARK I",
+        },
+      ],
+    },
   },
 ];
 
@@ -39,6 +125,7 @@ export const earphones = [
     description:
       "Tailor your listening experience with bespoke dynamic drivers from the new YX1 Wireless Earphones. Enjoy incredible high-fidelity sound even in noisy environments with its active noise cancellation feature.",
     image: Earphones,
+    slug: "yx1-wireless-EARPHONES",
   },
 ];
 
@@ -49,6 +136,7 @@ export const speakers = [
     description:
       "Tailor your listening experience with bespoke dynamic drivers from the new YX1 Wireless Earphones. Enjoy incredible high-fidelity sound even in noisy environments with its active noise cancellation feature.",
     image: Speaker1,
+    slug: "zx9-SPEAKER",
   },
   {
     subTitle: null,
@@ -56,5 +144,6 @@ export const speakers = [
     description:
       "Stream high quality sound wirelessly with minimal loss. The ZX7 bookshelf speaker uses high-end audiophile components that represents the top of the line powered speakers for home or studio use.",
     image: Speaker2,
+    slug: "zx7-SPEAKER",
   },
 ];

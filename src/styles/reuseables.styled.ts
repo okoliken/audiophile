@@ -40,7 +40,10 @@ export const HeroSection = styled.div`
 export const ProductDisplay = styled.div`
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
   @media (${device.mobileS}) {
     margin: 85px 25px;
     display: flex;
@@ -123,6 +126,16 @@ export const ProductDisplay = styled.div`
     position: relative;
     gap: 0 105px;
     flex-grow: 1;
+    h4 {
+      color: #000;
+
+      font-size: 18px;
+      margin: 35px 0px;
+      font-weight: 700;
+      line-height: normal;
+      letter-spacing: 1.286px;
+      text-transform: uppercase;
+    }
     div.product__img {
       height: 660px;
 
@@ -178,7 +191,7 @@ export const ProductDisplay = styled.div`
       }
       p {
         color: #000;
-        margin: 20px 0px 45px;
+        margin: 20px 0px 35px;
         font-size: 15px;
         font-style: normal;
         text-align: left;

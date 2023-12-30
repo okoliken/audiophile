@@ -6,11 +6,23 @@ import {
 import { ProductShowCase } from "../components/product/product-showcase";
 import { MarginBox } from "../styles/reuseables.styled";
 import { Button } from "../components/button/Button";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { productContext } from "../context";
+import { NavLink } from "react-router-dom";
+import { ProductPrototype } from '../utils/types'
+
 export const HeadPhones = () => {
   const headsets = useContext(productContext);
 
+  useEffect(() => {
+    if (!localStorage.getItem("details")) {
+      localStorage.setItem("details", JSON.stringify({}));
+    }
+  }, []);
+
+  const storeProductInLocalStorage = (product:ProductPrototype) => {
+    localStorage.setItem("details", JSON.stringify(product));
+  }
   return (
     <>
       <HeroSection>
@@ -32,7 +44,9 @@ export const HeadPhones = () => {
               <h2>{headset.title}</h2>
               <p>{headset.description}</p>
 
-              <Button buttonType={"primary"}>See Product</Button>
+              <Button onClick={() => storeProductInLocalStorage(headset)} buttonType={"primary"}>
+                <NavLink to={`/product/${headset.slug}`}>See Product</NavLink>
+              </Button>
             </div>
           </ProductDisplay>
         ))}

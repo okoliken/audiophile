@@ -32,7 +32,7 @@ export const BaseButton = styled.button<{
     ${(props) => (props.$buttonType === "primary" ? "#d87d4a" : "#000")} 50%,
     #fff 50%
   );
-  background-size: 500px;
+  background-size: 800px;
   background-repeat: no-repeat;
   background-position: 0%;
   -webkit-transition: background 300ms ease-in-out;
@@ -40,6 +40,7 @@ export const BaseButton = styled.button<{
 
   &:hover {
     background-position: 100%;
+
     color: ${(props) => (props.$buttonType === "primary" ? "#d87d4a" : "#000")};
     border: 3px solid
       ${(props) => (props.$buttonType === "primary" ? "#d87d4a" : "#000")};

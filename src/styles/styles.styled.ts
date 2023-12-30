@@ -807,3 +807,83 @@ export const EarPodsCTA = styled.div`
     }
   }
 `;
+
+export const CartOverlay = styled.div`
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5));
+  width: 100%;
+  min-height: 100vh;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-y: scroll;
+  @media (${device.laptop}) {
+    align-items: start;
+    justify-content: end;
+  }
+`;
+
+export const CartItem = styled.div`
+  width: 100%;
+  max-width: 377px;
+  height: 488px;
+  overflow-y: scroll;
+  border-radius: 8px;
+  background-color: #fff;
+  position: relative;
+
+  padding: 24px;
+  z-index: 9999;
+  flex-shrink: 0;
+  .cart__actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(350px);
+    width: 100%;
+
+    button {
+      flex-grow: 1;
+    }
+  }
+  .cart__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    h3 {
+      color: #000;
+      font-family: Manrope;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+      letter-spacing: 1.286px;
+      text-transform: uppercase;
+    }
+
+    p {
+      color: #000;
+      font-family: Manrope;
+      font-size: 15px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 25px; /* 166.667% */
+      text-decoration-line: underline;
+      opacity: 0.5;
+    }
+  }
+
+  @media (${device.laptop}) {
+    top: 12%;
+    right: 10%;
+    padding: 30px;
+    z-index: 9999;
+  }
+`;

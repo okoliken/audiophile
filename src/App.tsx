@@ -4,6 +4,7 @@ import { HeadPhones } from "./views/head-phones";
 import { Speakers } from "./views/speakers";
 import { Layout } from "./layouts/Layout";
 import { Earphones } from "./views/earphones";
+import { ProductDetails } from "./views/details/product-detail";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
       {
         path: "/earphones",
         element: <Earphones />,
+      },
+      {
+        path: "/product/:slug",
+        element: <ProductDetails />
       },
     ],
   },

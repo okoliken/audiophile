@@ -2,7 +2,10 @@ import {
   HeroSection,
   ProductDisplay,
   Container,
+  MarginBox,
 } from "../styles/reuseables.styled";
+
+import { ProductShowCase } from "../components/product/product-showcase";
 import { Button } from "../components/button/Button";
 import { useContext } from "react";
 import { productContext } from "../context";
@@ -37,6 +40,10 @@ export const Earphones = () => {
           </ProductDisplay>
         ))}
       </Container>
+
+      <MarginBox>
+        <ProductShowCase />
+      </MarginBox>
     </>
   );
 };
