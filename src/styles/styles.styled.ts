@@ -826,6 +826,12 @@ export const CartOverlay = styled.div`
   @media (${device.laptop}) {
     align-items: start;
     justify-content: end;
+
+    .animate__motion_div {
+      position: relative;
+      top: 12%;
+      right: 10%;
+    }
   }
 `;
 
@@ -879,11 +885,49 @@ export const CartItem = styled.div`
       opacity: 0.5;
     }
   }
+`;
 
-  @media (${device.laptop}) {
-    top: 12%;
-    right: 10%;
-    padding: 30px;
-    z-index: 9999;
+export const IncrementButton = styled.div`
+  width: 120px;
+  height: 48px;
+  background: #f1f1f1;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  p{
+    transform:translateY(7px);
   }
+
+  .increase,
+  .decrease {
+    color: #000;
+
+    text-align: center;
+    font-family: Manrope;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    
+  }
+
+  p.quantity{
+    color: #000 !important;
+
+    text-align: center;
+    font-family: Manrope;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  
+    
+  }
+
 `;

@@ -1,6 +1,7 @@
 import { CartItem, CartOverlay } from "../../styles/styles.styled";
 import { Button } from "../button/Button";
-import React, { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 type CartProps = {
   onClose: () => void;
@@ -33,15 +34,27 @@ export const Cart = ({ isOpen, onClose }: CartProps) => {
     <>
       {isOpen && (
         <CartOverlay onClick={handleOutsideClick}>
-          <CartItem ref={modalRef}>
-            <div className="cart__header">
-              <h3>cart ({totalCartItem})</h3>
-              <p>Remove all</p>
-            </div>
-            <div className="cart__actions">
-              <Button buttonType={"primary"}>checkout</Button>
-            </div>
-          </CartItem>
+          <motion.div
+          className={'animate__motion_div'}
+            style={{width:'100%', maxWidth:'377px'}}
+            initial={{ opacity: 0, scale: 0.4 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{
+              duration: 0.4,
+              delay: 0.1,
+              ease: [0, 0.71, 0.2, 1.01],
+            }}
+          >
+            <CartItem ref={modalRef}>
+              <div className="cart__header">
+                <h3>cart ({totalCartItem})</h3>
+                <p>Remove all</p>
+              </div>
+              <div className="cart__actions">
+                <Button buttonType={"primary"}>checkout</Button>
+              </div>
+            </CartItem>
+          </motion.div>
         </CartOverlay>
       )}
     </>

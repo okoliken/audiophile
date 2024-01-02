@@ -1,17 +1,19 @@
 import { Navbar } from "../components/navbar/Navbar";
 import { PageFooter } from "../components/footer/Footer";
-import { Outlet } from "react-router-dom";
+
 
 import HeadSet from "../assets/Bitmap-headset-mobile.png";
 import HeadSetDesktop from "../assets/Bitmap-headset.png";
 import HeadSetTablet from "../assets/Bitmap-headset-tablet.png";
 import { Container, SubSection } from "../styles/styles.styled";
 
-export const Layout = () => {
+export const Layout = ({ children }: React.PropsWithChildren) => {
+
+  console.log('Layout rendered');
   return (
     <>
       <Navbar />
-      <Outlet />
+      <main>{children}</main>
 
       <Container>
         <SubSection>

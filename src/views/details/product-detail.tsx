@@ -4,7 +4,7 @@ import {
   HeroSection,
 } from "../../styles/reuseables.styled";
 import { Button } from "../../components/button/Button";
-
+import { CartItemIncrementer } from "../../components/CartItemIncrementer";
 export const ProductDetails = () => {
   const product = JSON.parse(String(localStorage.getItem("details")));
 
@@ -25,7 +25,12 @@ export const ProductDetails = () => {
             <p>{product.description}</p>
             <h4>${product.details.price}</h4>
 
-            <Button buttonType={"primary"}>ADD TO CART</Button>
+            <div
+              style={{ display: "flex", alignItems: "center", gap: "0px 15px" }}
+            >
+              <CartItemIncrementer />
+              <Button buttonType={"primary"}>ADD TO CART</Button>
+            </div>
           </div>
         </ProductDisplay>
       </Container>

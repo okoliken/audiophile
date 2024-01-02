@@ -13,15 +13,15 @@ export const Product = () => {
     },
     {
       title: "SPEAKERS",
-      image: Earpod,
+      image: Speaker ,
       btnText: "Shop",
-      url: "/head-phones",
+      url: "/speakers",
     },
     {
       title: "EARPHONES",
-      image: Speaker,
+      image: Earpod,
       btnText: "Shop",
-      url: "/head-phones",
+      url: "/earphones",
     },
   ];
   return (
@@ -33,7 +33,7 @@ export const Product = () => {
           <div className="product__content">
             <h3>{product.title}</h3>
             <Flex>
-              <Link to={"/"}>{product.btnText}</Link>
+              <Link to={product.url}>{product.btnText}</Link>
 
               <svg
                 xmlns="http://www.w3.org/2000/svg"
