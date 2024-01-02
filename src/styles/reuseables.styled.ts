@@ -50,7 +50,7 @@ export const ProductDisplay = styled.div`
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    text-align: center;
+    text-align: left;
     gap: 15px 0px;
     div.product__img {
       height: 452px;
@@ -89,6 +89,7 @@ export const ProductDisplay = styled.div`
         font-weight: 400;
         line-height: normal;
         display: inline-block;
+        text-align: left !important;
         letter-spacing: 10px;
         text-transform: uppercase;
       }
@@ -99,7 +100,7 @@ export const ProductDisplay = styled.div`
         font-weight: 700;
         line-height: normal;
         letter-spacing: 1px;
-        text-align: center;
+        text-align: left;
         text-transform: uppercase;
       }
       p {
@@ -107,7 +108,7 @@ export const ProductDisplay = styled.div`
         margin: 20px 0px;
         font-size: 15px;
         font-style: normal;
-        text-align: center;
+        text-align: left;
         font-weight: 500;
         line-height: 25px; /* 166.667% */
         opacity: 0.5;
@@ -228,5 +229,74 @@ export const MarginBox = styled.div`
 
   @media (${device.laptop}) {
     margin: 148px 0px;
+  }
+`;
+
+export const Features = styled.div`
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  flex-direction: column;
+  margin: 85px 25px;
+
+  h2 {
+    color: #000;
+    font-family: Manrope;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 36px; /* 150% */
+    letter-spacing: 0.857px;
+    text-transform: uppercase;
+    margin: 24px 0px;
+  }
+
+  p {
+    color: #000;
+    font-family: Manrope;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 25px; /* 166.667% */
+    opacity: 0.5;
+    margin: 24px 0px;
+  }
+  .inBox {
+    margin-top: 30px;
+
+    .box-content {
+      display: flex;
+      align-items: center;
+      margin-bottom: 14px;
+      gap: 0 14px;
+
+      span#tag {
+        color: #d87d4a;
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 700;
+        display: inline-block;
+        line-height: 25px;
+        opacity: 1;
+      }
+
+      span {
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 500;
+        display: inline-block;
+        line-height: 25px;
+        opacity: 0.5;
+      }
+    }
+  }
+
+  @media (${device.laptop}) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    .inBox {
+      flex-grow: 1;
+    }
   }
 `;

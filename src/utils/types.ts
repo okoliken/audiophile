@@ -4,7 +4,7 @@ export interface similar_products {
 }
 export interface ProductDetails {
   price: number;
-  feature: string;
+  feature: string[];
   inBox: { x: string; y: string }[];
   images: string[];
   similar_products: similar_products[];
