@@ -896,8 +896,8 @@ export const IncrementButton = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  p{
-    transform:translateY(7px);
+  p {
+    font-size: 13px;
   }
 
   .increase,
@@ -912,11 +912,10 @@ export const IncrementButton = styled.div`
     line-height: normal;
     letter-spacing: 1px;
     text-transform: uppercase;
-    
   }
 
-  p.quantity{
-    color: #000 !important;
+  p.quantity {
+    color: #000;
 
     text-align: center;
     font-family: Manrope;
@@ -926,8 +925,297 @@ export const IncrementButton = styled.div`
     line-height: normal;
     letter-spacing: 1px;
     text-transform: uppercase;
-  
-    
   }
 
+  @media (${device.tablet}) {
+    p {
+      transform: translateY(0px);
+    }
+  }
+  @media (${device.laptop}) {
+    p {
+      transform: translateY(7px);
+      cursor: pointer;
+      font-size: 18px !important;
+      color: #000 !important;
+    }
+  }
+`;
+
+export const ProductGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 12px 18px;
+  margin: 85px 25px;
+  img {
+    border-radius: 8px;
+  }
+
+  .first-slice {
+    display: flex;
+    flex-direction: column;
+    gap: 18px 0px;
+  }
+  .first-slice img {
+    width: 100%;
+    max-width: 100%;
+
+    object-fit: cover;
+  }
+
+  .second-slice img {
+    width: 100%;
+    max-width: 100%;
+    height: 500px;
+    object-fit: cover;
+  }
+  @media (${device.mobileS}) {
+    .second-slice img {
+      width: 100%;
+      max-width: 100%;
+      height: 500px;
+      object-fit: cover;
+    }
+  }
+  @media (${device.mobileM}) {
+    .second-slice img {
+      width: 100%;
+      max-width: 100%;
+      height: 500px;
+      object-fit: cover;
+    }
+  }
+  @media (${device.mobileL}) {
+    .second-slice img {
+      width: 100%;
+      max-width: 100%;
+      height: 500px;
+      object-fit: cover;
+    }
+  }
+
+  @media (${device.tablet}) {
+    margin: 85px 25px;
+    grid-template-columns: repeat(12, 1fr);
+
+    .first-slice {
+      display: flex;
+      grid-column: span 5;
+      flex-direction: column;
+      gap: 18px 0px;
+    }
+    .second-slice {
+      grid-column: span 7;
+    }
+    .first-slice img {
+      width: 100%;
+      max-width: 610px;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .second-slice img {
+      width: 100%;
+      height: 100%;
+      max-width: 955px;
+      object-fit: cover;
+    }
+  }
+  @media (${device.laptop}) {
+    margin: 85px 0px;
+    grid-template-columns: repeat(12, 1fr);
+
+    .first-slice {
+      display: flex;
+      grid-column: span 5;
+      flex-direction: column;
+      gap: 18px 0px;
+    }
+    .second-slice {
+      grid-column: span 7;
+    }
+    .first-slice img {
+      width: 100%;
+      max-width: 610px;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .second-slice img {
+      width: 100%;
+      height: 100%;
+      max-width: 955px;
+
+      object-fit: cover;
+    }
+  }
+`;
+
+export const SimilarProducts = styled.div`
+  .products {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  text-align: center;
+
+  h2 {
+    color: #000;
+
+    text-align: center;
+
+    font-size: 24px;
+
+    font-weight: 700;
+    line-height: 36px; /* 150% */
+    letter-spacing: 0.857px;
+    text-transform: uppercase;
+  }
+  margin: 100px 34px;
+  .products {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 50px 32px;
+    margin: 42px 0px;
+
+    p {
+      margin: 35px 0;
+      color: #000;
+      text-align: center;
+
+      font-size: 24px;
+
+      font-weight: 700;
+      line-height: normal;
+      letter-spacing: 1.714px;
+      text-transform: uppercase;
+    }
+
+    .product {
+      border-radius: 8px;
+      width: 100%;
+      height: 120px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background: #f1f1f1;
+
+      img {
+        width: 60.566px;
+        height: 87px;
+      }
+    }
+  }
+  @media (${device.mobileS}) {
+    margin: 100px 34px;
+    .products {
+      grid-template-columns: repeat(1, 1fr);
+      gap: 50px 32px;
+      margin: 42px 0px;
+
+      p {
+        margin: 35px 0;
+        color: #000;
+        text-align: center;
+
+        font-size: 24px;
+
+        font-weight: 700;
+        line-height: normal;
+        letter-spacing: 1.714px;
+        text-transform: uppercase;
+      }
+
+      .product {
+        border-radius: 8px;
+        width: 100%;
+        height: 120px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background: #f1f1f1;
+
+        img {
+          width: 60.566px;
+          height: 87px;
+        }
+      }
+    }
+  }
+
+  @media (${device.tablet}) {
+    margin: 100px 10px;
+    .products {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0 32px;
+      margin: 42px 0px;
+
+      p {
+        margin: 35px 0;
+        color: #000;
+        text-align: center;
+
+        font-size: 24px;
+
+        font-weight: 700;
+        line-height: normal;
+        letter-spacing: 1.714px;
+        text-transform: uppercase;
+      }
+
+      .product {
+        border-radius: 8px;
+        width: 100%;
+        height: 318px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background: #f1f1f1;
+
+        img {
+          width: 148.305px;
+          height: 193px;
+        }
+      }
+    }
+  }
+  @media (${device.laptop}) {
+    margin-top: 100px;
+    .products {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0 32px;
+      margin: 42px 0px;
+
+      p {
+        margin: 35px 0;
+        color: #000;
+        text-align: center;
+
+        font-size: 24px;
+
+        font-weight: 700;
+        line-height: normal;
+        letter-spacing: 1.714px;
+        text-transform: uppercase;
+      }
+
+      .product {
+        border-radius: 8px;
+        width: 100%;
+        height: 318px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background: #f1f1f1;
+
+        img {
+          width: 148.305px;
+          height: 193px;
+        }
+      }
+    }
+  }
 `;

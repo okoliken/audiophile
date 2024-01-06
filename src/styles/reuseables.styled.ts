@@ -44,6 +44,16 @@ export const ProductDisplay = styled.div`
     text-decoration: none;
     color: inherit;
   }
+  h4 {
+    color: #000;
+
+    font-size: 18px;
+    margin: 25px 0px;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 1.286px;
+    text-transform: uppercase;
+  }
   @media (${device.mobileS}) {
     margin: 85px 25px;
     display: flex;
@@ -116,10 +126,13 @@ export const ProductDisplay = styled.div`
     }
   }
   @media (${device.tablet}) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0 50px;
   }
   @media (${device.laptop}) {
     min-height: 100vh;
-
+    margin: 85px 0px;
     height: 100%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -291,12 +304,52 @@ export const Features = styled.div`
     }
   }
 
-  @media (${device.laptop}) {
+  /* @media(${device.tablet}){
+    
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+  } */
+
+  @media (${device.laptop}) {
+    flex-direction: row;
+    align-items: start;
+    width: 100%;
+    justify-content: space-between;
+    gap: 0 120px;
+    margin: 88px 0px;
+    .features {
+      width: 60%;
+    }
+
     .inBox {
-      flex-grow: 1;
+      width: 40%;
+
+      .box-content {
+        display: flex;
+        align-items: center;
+        margin-bottom: 14px;
+        gap: 0 18px;
+
+        span#tag {
+          color: #d87d4a;
+          font-size: 15px;
+          font-style: normal;
+          font-weight: 700;
+          display: inline-block;
+          line-height: 25px;
+          opacity: 1;
+        }
+
+        span {
+          font-size: 15px;
+          font-style: normal;
+          font-weight: 500;
+          display: inline-block;
+          line-height: 25px;
+          opacity: 0.5;
+        }
+      }
     }
   }
 `;

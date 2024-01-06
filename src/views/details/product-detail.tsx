@@ -1,13 +1,27 @@
+import { useState } from "react";
+
 import {
   ProductDisplay,
   Container,
   HeroSection,
   Features,
 } from "../../styles/reuseables.styled";
+import { ProductGrid, SimilarProducts } from "../../styles/styles.styled";
 import { Button } from "../../components/button/Button";
 import { CartItemIncrementer } from "../../components/CartItemIncrementer";
 export const ProductDetails = () => {
   const product = JSON.parse(String(localStorage.getItem("details")));
+  const [quantity, updateQuantity] = useState(1);
+
+  const increaseQuantity = () => {
+    updateQuantity((prev) => prev + 1);
+  };
+
+  const decreaseQuantity = () => {
+    if (quantity > 0) {
+      updateQuantity((prev) => prev - 1);
+    } else return;
+  };
 
   return (
     <>
@@ -29,7 +43,11 @@ export const ProductDetails = () => {
             <div
               style={{ display: "flex", alignItems: "center", gap: "0px 15px" }}
             >
-              <CartItemIncrementer />
+              <CartItemIncrementer
+                quantity={quantity}
+                increaseQuantity={increaseQuantity}
+                decreaseQuantity={decreaseQuantity}
+              />
               <Button buttonType={"primary"}>ADD TO CART</Button>
             </div>
           </div>
@@ -50,7 +68,7 @@ export const ProductDetails = () => {
               {product.details.inBox.map(
                 (box: { x: string; y: string }, index: number) => (
                   <div className="box-content" key={index}>
-                    <span id={'tag'}>{box.x}</span>
+                    <span id={"tag"}>{box.x}</span>
                     <span>{box.y}</span>
                   </div>
                 )
@@ -58,6 +76,41 @@ export const ProductDetails = () => {
             </div>
           </div>
         </Features>
+
+        <ProductGrid>
+          <div className={"first-slice"}>
+            {product.details.images
+              .slice(0, 2)
+              .map((img: string, index: number) => (
+                <img key={index} src={img} />
+              ))}
+          </div>
+          <div className={"second-slice"}>
+            {product.details.images
+              .slice(2, 3)
+              .map((img: string, index: number) => (
+                <img key={index} src={img} />
+              ))}
+          </div>
+        </ProductGrid>
+
+        <SimilarProducts>
+          <h2>you may also like</h2>
+
+          <div className={"products"}>
+            {product.details.similar_products.map(
+              (product: { img: string; title: string }, index: number) => (
+                <div key={index}>
+                  <div className="product">
+                    <img src={product.img} alt={product.title} />
+                  </div>
+                  <p>{product.title}</p>
+                  <Button buttonType={"primary"}>See Product</Button>
+                </div>
+              )
+            )}
+          </div>
+        </SimilarProducts>
       </Container>
     </>
   );

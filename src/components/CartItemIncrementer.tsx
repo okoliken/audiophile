@@ -1,13 +1,27 @@
-import { IncrementButton } from "../styles/styles.styled"
+import { IncrementButton } from "../styles/styles.styled";
 
-export const CartItemIncrementer = () => {
-    return (
-        <>
-        <IncrementButton>
-            <p className="decrease">-</p>
-            <p className="quantity">1</p>
-            <p className="increase">+</p>
-        </IncrementButton>
-        </>
-    )
-}
+type Props = {
+  decreaseQuantity: () => void;
+  increaseQuantity: () => void;
+  quantity: number;
+};
+
+export const CartItemIncrementer = ({
+  decreaseQuantity,
+  increaseQuantity,
+  quantity,
+}: Props) => {
+  return (
+    <>
+      <IncrementButton>
+        <p onClick={decreaseQuantity} className="decrease">
+          -
+        </p>
+        <p className="quantity">{quantity}</p>
+        <p onClick={increaseQuantity} className="increase">
+          +
+        </p>
+      </IncrementButton>
+    </>
+  );
+};
