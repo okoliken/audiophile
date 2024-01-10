@@ -11,10 +11,17 @@ export interface ProductDetails {
 }
 
 export interface ProductPrototype {
-  subTitle: string | null;
+  sub_title: string | null;
   title: string;
   description: string;
   image: string;
   slug: string;
   details: ProductDetails;
+}
+export interface Product {
+  sub_title: string | null;
+  product_name: string;
+  description: string;
+  image: string;
+  slug: string;
 }

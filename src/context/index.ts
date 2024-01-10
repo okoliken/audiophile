@@ -1,10 +1,6 @@
 import { createContext } from "react";
-import { headsets, earphones, speakers } from "../utils/index";
+import { Product } from '../utils/types'
 
-const products = {
-  headsets: headsets,
-  earphones: earphones,
-  speakers: speakers,
-};
 
-export const productContext = createContext(products);
+
+export const HeadSetContext = createContext<Product[] | null>(null);

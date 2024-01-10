@@ -8,10 +8,10 @@ import {
 import { ProductShowCase } from "../components/product/product-showcase";
 import { Button } from "../components/button/Button";
 import { useContext } from "react";
-import { productContext } from "../context";
+// import { productContext } from "../context"; 
 
 export const Earphones = () => {
-  const earphones = useContext(productContext);
+  // const earphones = useContext(productContext);
 
   return (
     <>
@@ -20,7 +20,7 @@ export const Earphones = () => {
       </HeroSection>
 
       <Container>
-        {earphones.earphones.map((earphone, index) => (
+        {/* {earphones.earphones.map((earphone, index) => (
           <ProductDisplay key={index}>
             <div
               style={index === 1 ? { order: 4 } : {}}
@@ -38,7 +38,7 @@ export const Earphones = () => {
               <Button buttonType={"primary"}>See Product</Button>
             </div>
           </ProductDisplay>
-        ))}
+        ))} */}
       </Container>
 
       <MarginBox>

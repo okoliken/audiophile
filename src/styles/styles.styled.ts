@@ -752,7 +752,7 @@ export const EarPodsCTA = styled.div`
     div.cta-container {
       border-radius: 8px;
       background: #f1f1f1;
-      max-width: 540px;
+      max-width: 100%;
       width: 100%;
       height: 100%;
       padding: 30px;

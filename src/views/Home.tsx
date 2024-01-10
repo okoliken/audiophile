@@ -14,8 +14,9 @@ import bitMapMobile from "../assets/bitmap-mobile.png";
 import bitMapTablet from "../assets/bitmap-tab.png";
 import bitMapLaptop from "../assets/bitmap-desk.png";
 import Earpods from "../assets/earpods.png";
-
+import { LazyLoadImage } from "react-lazy-load-image-component";
 export const Home = () => {
+
   return (
     <>
       <HeroBanner>
@@ -65,21 +66,24 @@ export const Home = () => {
                 </Button>
               </div>
 
-              <img
+              <LazyLoadImage
+              effect="opacity"
                 className="bit-mobile"
                 src={bitMapMobile}
                 alt="bitMapMobile"
               />
             </div>
             <div>
-              <img
+              <LazyLoadImage
+              effect="opacity"
                 className="bit-tablet"
                 src={bitMapTablet}
                 alt="bitMapTablet"
               />
             </div>
             <div>
-              <img
+              <LazyLoadImage
+              effect="opacity"
                 className="bit-desktop"
                 src={bitMapLaptop}
                 alt="bitMapLaptop"
@@ -105,10 +109,3 @@ export const Home = () => {
   );
 };
 
-// divider color
-// divider dropdown
-// slider and carosel widget with better images
-// slider preview
-// accordion
-// countdown widget
-// blog post preview - land scape  and protrait

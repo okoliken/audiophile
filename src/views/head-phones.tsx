@@ -6,45 +6,45 @@ import {
 import { ProductShowCase } from "../components/product/product-showcase";
 import { MarginBox } from "../styles/reuseables.styled";
 import { Button } from "../components/button/Button";
-import { useContext, useEffect } from "react";
-import { productContext } from "../context";
+import { useContext } from "react";
+import { HeadSetContext } from "../context";
 import { NavLink } from "react-router-dom";
-import { ProductPrototype } from '../utils/types'
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 export const HeadPhones = () => {
-  const headsets = useContext(productContext);
+  const headsets = useContext(HeadSetContext);
 
-  useEffect(() => {
-    if (!localStorage.getItem("details")) {
-      localStorage.setItem("details", JSON.stringify({}));
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (!localStorage.getItem("details")) {
+  //     localStorage.setItem("details", JSON.stringify({}));
+  //   }
+  // }, []);
 
-  const storeProductInLocalStorage = (product:ProductPrototype) => {
-    localStorage.setItem("details", JSON.stringify(product));
-  }
+  // const storeProductInLocalStorage = (product:ProductPrototype) => {
+  //   localStorage.setItem("details", JSON.stringify(product));
+  // }
   return (
     <>
       <HeroSection>
         <h2>HeadPhones</h2>
       </HeroSection>
       <Container>
-        {headsets.headsets.map((headset, index) => (
+        {headsets.map((headset, index) => (
           <ProductDisplay key={index}>
             <div
               style={index === 1 ? { order: 4 } : {}}
               className="product__img"
             >
-              <img src={headset.image} alt="product image" />
+              <LazyLoadImage effect="blur" src={headset.image} alt="product image" />
 
               <div className={"oval__shadow"}></div>
             </div>
             <div className={"product__content"}>
-              <span>{headset.subTitle}</span>
-              <h2>{headset.title}</h2>
+              <span>{headset.sub_title}</span>
+              <h2>{headset.product_name}</h2>
               <p>{headset.description}</p>
 
-              <Button onClick={() => storeProductInLocalStorage(headset)} buttonType={"primary"}>
+              <Button buttonType={"primary"}>
                 <NavLink to={`/product/${headset.slug}`}>See Product</NavLink>
               </Button>
             </div>

@@ -5,8 +5,10 @@ import { Speakers } from "./views/speakers";
 import { Layout } from "./layouts/Layout";
 import { Earphones } from "./views/earphones";
 import { ProductDetails } from "./views/details/product-detail";
-import { ScrollToTop } from './hooks/scroll-to-top';
+import { ScrollToTop } from "./hooks/scroll-to-top";
+import { all_headsets } from "./services/index";
 
+import { HeadSetContext } from "./context";
 export default function App() {
   return (
     <>
@@ -25,7 +27,9 @@ export default function App() {
             path="/head-phones"
             element={
               <Layout>
-                <HeadPhones />
+                <HeadSetContext.Provider value={all_headsets.data}>
+                  <HeadPhones />
+                </HeadSetContext.Provider>
               </Layout>
             }
           />
