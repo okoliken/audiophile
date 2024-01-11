@@ -30,13 +30,15 @@ export const Cart = ({ isOpen, onClose }: CartProps) => {
     }
   }, [isOpen, body]);
 
+
+
   return (
     <>
       {isOpen && (
         <CartOverlay onClick={handleOutsideClick}>
           <motion.div
-          className={'animate__motion_div'}
-            style={{width:'100%', maxWidth:'377px'}}
+            className={"animate__motion_div"}
+            style={{ width: "100%", maxWidth: "377px" }}
             initial={{ opacity: 0, scale: 0.4 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{
@@ -50,6 +52,8 @@ export const Cart = ({ isOpen, onClose }: CartProps) => {
                 <h3>cart ({totalCartItem})</h3>
                 <p>Remove all</p>
               </div>
+              
+              
               <div className="cart__actions">
                 <Button buttonType={"primary"}>checkout</Button>
               </div>

@@ -6,10 +6,8 @@ import HeadSet from "../assets/Bitmap-headset-mobile.png";
 import HeadSetDesktop from "../assets/Bitmap-headset.png";
 import HeadSetTablet from "../assets/Bitmap-headset-tablet.png";
 import { Container, SubSection } from "../styles/styles.styled";
-import { LazyLoadImage } from "react-lazy-load-image-component";
-export const Layout = ({ children }: React.PropsWithChildren) => {
 
- 
+export const Layout = ({ children }: React.PropsWithChildren) => { 
   return (
     <>
       <Navbar />

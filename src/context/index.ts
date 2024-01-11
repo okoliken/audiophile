@@ -3,4 +3,4 @@ import { Product } from '../utils/types'
 
 
 
-export const HeadSetContext = createContext<Product[] | null>(null);
+export const ProductContext = createContext<Product[] | null>(null);
