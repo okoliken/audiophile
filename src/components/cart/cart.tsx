@@ -2,7 +2,7 @@ import { CartItem, CartOverlay } from "../../styles/styles.styled";
 import { Button } from "../button/Button";
 import { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
-
+import CartIcon from "../../assets/cart.svg";
 type CartProps = {
   onClose: () => void;
   isOpen: boolean;
@@ -30,8 +30,6 @@ export const Cart = ({ isOpen, onClose }: CartProps) => {
     }
   }, [isOpen, body]);
 
-
-
   return (
     <>
       {isOpen && (
@@ -39,8 +37,8 @@ export const Cart = ({ isOpen, onClose }: CartProps) => {
           <motion.div
             className={"animate__motion_div"}
             style={{ width: "100%", maxWidth: "377px" }}
-            initial={{ opacity: 0, scale: 0.4 }}
-            animate={{ opacity: 1, scale: 1 }}
+            initial={{ scale: 0.4 }}
+            animate={{ scale: 1 }}
             transition={{
               duration: 0.4,
               delay: 0.1,
@@ -52,11 +50,20 @@ export const Cart = ({ isOpen, onClose }: CartProps) => {
                 <h3>cart ({totalCartItem})</h3>
                 <p>Remove all</p>
               </div>
-              
-              
-              <div className="cart__actions">
-                <Button buttonType={"primary"}>checkout</Button>
+
+              <div className="empty__cart">
+                <img
+                  src={CartIcon}
+                  alt="empty car icon"
+                  style={{ aspectRatio: "7/2" }}
+                />
+
+                <p>Your cart is empty : (</p>
               </div>
+              
+              {/* <div className="cart__actions">
+                <Button buttonType={"primary"}>checkout</Button>
+              </div> */}
             </CartItem>
           </motion.div>
         </CartOverlay>

@@ -842,20 +842,40 @@ export const CartItem = styled.div`
   overflow-y: scroll;
   border-radius: 8px;
   background-color: #fff;
-  position: relative;
+  position: relative !important;
 
   padding: 24px;
   z-index: 9999;
   flex-shrink: 0;
   .cart__actions {
+    background-size: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
-    transform: translateY(350px);
     width: 100%;
+
 
     button {
       flex-grow: 1;
+    }
+  }
+
+  .empty__cart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    /* margin: 10px 0; */
+    height: 100%;
+    p {
+      color: #000;
+      font-family: Manrope;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 25px; /* 166.667% */
+      margin: 10px 0;
+      opacity: 0.5;
     }
   }
   .cart__header {
