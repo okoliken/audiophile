@@ -8,7 +8,7 @@ import { NavLink } from "react-router-dom";
 import { Container } from "../../styles/styles.styled";
 import { device } from "../devices";
 import { Cart } from "../cart/cart";
-
+import { BottomDrawer } from "./BottomDrawer";
 import { useState } from "react";
 
 const NavBar = styled.div`
@@ -26,10 +26,12 @@ const NavBar = styled.div`
 
 export const Navbar = () => {
   const [cartMenu, openCart] = useState(false);
+  const [isDrawerOpen, setDrawerOpen] = useState(true);
+
+  const toggleBottomDrawer = () => setDrawerOpen(!isDrawerOpen);
 
   const openCartMenu = () => {
     openCart(true);
-    
   };
 
   const closeCartModal = () => {
@@ -41,7 +43,7 @@ export const Navbar = () => {
       <NavBar>
         <Container>
           <FlexContainer>
-            <Menu />
+            <Menu toggleBottomDrawer={toggleBottomDrawer} />
             <div className="header__menu">
               <Logo />
             </div>
@@ -61,7 +63,20 @@ export const Navbar = () => {
           </FlexContainer>
         </Container>
       </NavBar>
-
+      <BottomDrawer isOpen={isDrawerOpen} onClose={toggleBottomDrawer}>
+        <ul className="bottom__nav_drawer">
+          {routes.map((link, index) => (
+            <li key={index}>
+              <NavLink
+                className={({ isActive }) => (isActive ? "active" : "")}
+                to={link.link}
+              >
+                {link.name}
+              </NavLink>
+            </li>
+          ))}
+        </ul>
+      </BottomDrawer>
       <Cart isOpen={cartMenu} onClose={closeCartModal} />
     </>
   );

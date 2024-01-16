@@ -848,7 +848,10 @@ export const CartItem = styled.div`
   z-index: 9999;
   flex-shrink: 0;
   .cart__actions {
+    position: sticky; // Use sticky positioning
+    bottom: 0;
     background-size: #fff;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
