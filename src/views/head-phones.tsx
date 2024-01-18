@@ -2,6 +2,7 @@ import {
   HeroSection,
   ProductDisplay,
   Container,
+  ReOrderProducts,
 } from "../styles/reuseables.styled";
 import { ProductShowCase } from "../components/product/product-showcase";
 import { MarginBox } from "../styles/reuseables.styled";
@@ -12,7 +13,7 @@ import { NavLink } from "react-router-dom";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 export const HeadPhones = () => {
-  const headsets = useContext(ProductContext);  
+  const headsets = useContext(ProductContext);
   return (
     <>
       <HeroSection>
@@ -21,13 +22,14 @@ export const HeadPhones = () => {
       <Container>
         {headsets.map((headset, index) => (
           <ProductDisplay key={index}>
-            <div
-              style={index === 1 ? { order: 4 } : {}}
-              className="product__img"
-            >
-              <LazyLoadImage effect="blur" src={headset.image} alt="product image" />
+            <ReOrderProducts className="product__img" index={index}>
+              <LazyLoadImage
+                effect="blur"
+                src={headset.image}
+                alt="product image"
+              />
               <div className={"oval__shadow"}></div>
-            </div>
+            </ReOrderProducts>
             <div className={"product__content"}>
               <span>{headset.sub_title}</span>
               <h2>{headset.product_name}</h2>

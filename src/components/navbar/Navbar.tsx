@@ -10,6 +10,7 @@ import { device } from "../devices";
 import { Cart } from "../cart/cart";
 import { BottomDrawer } from "./BottomDrawer";
 import { useState } from "react";
+import { useToggler } from "../../hooks/useToggle";
 
 const NavBar = styled.div`
   background-color: transparent;
@@ -26,9 +27,7 @@ const NavBar = styled.div`
 
 export const Navbar = () => {
   const [cartMenu, openCart] = useState(false);
-  const [isDrawerOpen, setDrawerOpen] = useState(true);
-
-  const toggleBottomDrawer = () => setDrawerOpen(!isDrawerOpen);
+  const { isToggled, toggleMobileDrawer } = useToggler();
 
   const openCartMenu = () => {
     openCart(true);
@@ -39,11 +38,11 @@ export const Navbar = () => {
   };
 
   return (
-    <>
+    <div style={{ position: "relative" }}>
       <NavBar>
         <Container>
           <FlexContainer>
-            <Menu toggleBottomDrawer={toggleBottomDrawer} />
+            <Menu toggleBottomDrawer={toggleMobileDrawer} />
             <div className="header__menu">
               <Logo />
             </div>
@@ -63,7 +62,7 @@ export const Navbar = () => {
           </FlexContainer>
         </Container>
       </NavBar>
-      <BottomDrawer isOpen={isDrawerOpen} onClose={toggleBottomDrawer}>
+      <BottomDrawer isOpen={isToggled} onClose={toggleMobileDrawer}>
         <ul className="bottom__nav_drawer">
           {routes.map((link, index) => (
             <li key={index}>
@@ -78,6 +77,6 @@ export const Navbar = () => {
         </ul>
       </BottomDrawer>
       <Cart isOpen={cartMenu} onClose={closeCartModal} />
-    </>
+    </div>
   );
 };

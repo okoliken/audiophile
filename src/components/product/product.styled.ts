@@ -26,7 +26,6 @@ export const ProductContainer = styled.div`
     background: #f1f1f1;
   }
   @media (${device.mobileS}) {
-   
     gap: 108px 0px;
     grid-template-columns: repeat(1, 1fr);
     img {
@@ -79,10 +78,9 @@ export const ProductContainer = styled.div`
 
   @media (${device.laptop}) {
     grid-template-columns: repeat(3, 1fr);
-    
-
+    gap: 0 45px;
     .product__xy {
-      width: 350px;
+      max-width: 100%;
       height: 204px;
       border-radius: 8px;
       background: #f1f1f1;
@@ -96,8 +94,6 @@ export const ProductContainer = styled.div`
         text-transform: uppercase;
         margin-bottom: 12px;
       }
-
-      
     }
 
     img {

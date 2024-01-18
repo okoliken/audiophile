@@ -3,6 +3,7 @@ import {
   ProductDisplay,
   Container,
   MarginBox,
+  ReOrderProducts,
 } from "../styles/reuseables.styled";
 import { ProductShowCase } from "../components/product/product-showcase";
 import { Button } from "../components/button/Button";
@@ -21,17 +22,14 @@ export const Speakers = () => {
       <Container>
         {speakers.map((speaker, index) => (
           <ProductDisplay key={index}>
-            <div
-              style={index === 1 ? { order: 4 } : {}}
-              className="product__img"
-            >
+            <ReOrderProducts index={index} className="product__img">
               <LazyLoadImage
                 effect="blur"
                 src={speaker.image}
                 alt="product image"
               />
               <div className={"oval__shadow"}></div>
-            </div>
+            </ReOrderProducts>
             <div className={"product__content"}>
               <span>{speaker.sub_title}</span>
               <h2>{speaker.product_name}</h2>

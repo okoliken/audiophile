@@ -358,6 +358,7 @@ export const SubSection = styled.div`
     margin: 105px 0;
     min-height: 100vh;
     gap: 0 84px;
+    padding: 0px;
     .subsection__headset_xy_image-mobile {
       display: none;
     }
@@ -607,6 +608,7 @@ export const XZ7PRODUCT = styled.div`
 
   .call-action {
     position: absolute;
+    
   }
 
   @media (${device.mobileS}) {
@@ -696,7 +698,7 @@ export const XZ7PRODUCT = styled.div`
     }
   }
   @media (${device.laptop}) {
-    margin: 35px 0;
+    margin-bottom: 33px;
     padding: 0;
     .call-action {
       transform: translateX(100px) translateY(180px);
@@ -721,7 +723,7 @@ export const XZ7PRODUCT = styled.div`
       display: block;
       width: 100%;
       max-width: 1247.239px;
-      height: 463px;
+      height: 380px;
     }
   }
 `;
@@ -729,13 +731,58 @@ export const XZ7PRODUCT = styled.div`
 export const EarPodsCTA = styled.div`
   display: grid;
   grid-template-columns: repeat(1, 1fr);
+  padding: 15px;
+  div.cta-container {
+    border-radius: 8px;
+    background: #f1f1f1;
+    width: 100%;
+    height: 100%;
+    padding: 30px;
 
+    .cta-action {
+      transform: translateX(0px);
+      h3 {
+        color: #000;
+        margin-bottom: 12px;
+        font-family: Manrope;
+        font-size: 28px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+    }
+  }
   @media (${device.mobileS}) {
     img {
       width: 100%;
       max-width: 731.539px;
       border-radius: 8px;
       grid-template-columns: repeat(1, 1fr);
+    }
+
+    div.cta-container {
+      border-radius: 8px;
+      background: #f1f1f1;
+      width: 100%;
+      height: 100%;
+      padding: 30px;
+
+      .cta-action {
+        transform: translateX(0px);
+        h3 {
+          color: #000;
+          margin-bottom: 12px;
+          font-family: Manrope;
+          font-size: 28px;
+          font-style: normal;
+          font-weight: 700;
+          line-height: normal;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+        }
+      }
     }
   }
   @media (${device.tablet}) {
@@ -856,7 +903,6 @@ export const CartItem = styled.div`
     align-items: center;
     justify-content: center;
     width: 100%;
-
 
     button {
       flex-grow: 1;

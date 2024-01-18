@@ -54,6 +54,45 @@ export const ProductDisplay = styled.div`
     letter-spacing: 1.286px;
     text-transform: uppercase;
   }
+
+  .product__content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    span {
+      color: #d87d4a;
+      margin: 25px 0px;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      display: inline-block;
+      text-align: center !important;
+      letter-spacing: 10px;
+      text-transform: uppercase;
+    }
+    h2 {
+      color: #000;
+      font-size: 28px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+      letter-spacing: 1px;
+      text-align: center;
+      text-transform: uppercase;
+    }
+    p {
+      color: #000;
+      margin: 20px 0px;
+      font-size: 15px;
+      font-style: normal;
+      text-align: center;
+      font-weight: 500;
+      line-height: 25px; /* 166.667% */
+      opacity: 0.5;
+    }
+  }
   @media (${device.mobileS}) {
     margin: 85px 25px;
     display: flex;
@@ -91,6 +130,10 @@ export const ProductDisplay = styled.div`
     }
 
     .product__content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
       span {
         color: #d87d4a;
         margin: 25px 0px;
@@ -99,7 +142,6 @@ export const ProductDisplay = styled.div`
         font-weight: 400;
         line-height: normal;
         display: inline-block;
-        text-align: left !important;
         letter-spacing: 10px;
         text-transform: uppercase;
       }
@@ -110,7 +152,6 @@ export const ProductDisplay = styled.div`
         font-weight: 700;
         line-height: normal;
         letter-spacing: 1px;
-        text-align: left;
         text-transform: uppercase;
       }
       p {
@@ -118,7 +159,6 @@ export const ProductDisplay = styled.div`
         margin: 20px 0px;
         font-size: 15px;
         font-style: normal;
-        text-align: left;
         font-weight: 500;
         line-height: 25px; /* 166.667% */
         opacity: 0.5;
@@ -182,6 +222,10 @@ export const ProductDisplay = styled.div`
     }
 
     .product__content {
+      display: flex;
+      align-items: start;
+      justify-content: start;
+      flex-direction: column;
       span {
         color: #d87d4a;
         margin: 25px 0px;
@@ -189,6 +233,7 @@ export const ProductDisplay = styled.div`
         font-style: normal;
         font-weight: 400;
         line-height: normal;
+        text-align: left;
         display: inline-block;
         letter-spacing: 10px;
         text-transform: uppercase;
@@ -201,6 +246,7 @@ export const ProductDisplay = styled.div`
         line-height: 44px; /* 110% */
         letter-spacing: 1.429px;
         text-align: left;
+        text-align: left;
         text-transform: uppercase;
       }
       p {
@@ -208,6 +254,7 @@ export const ProductDisplay = styled.div`
         margin: 20px 0px 35px;
         font-size: 15px;
         font-style: normal;
+        text-align: left;
         text-align: left;
         font-weight: 500;
         line-height: 25px; /* 166.667% */
@@ -234,6 +281,14 @@ export const Container = styled.div`
   }
 `;
 
+export const ReOrderProducts = styled.div<{ index: number }>`
+  order: "unset";
+
+  @media (${device.tablet}) {
+    order: ${({ index }) => (index === 1 ? 4 : "unset")};
+  }
+`;
+
 export const MarginBox = styled.div`
   margin: 48px 0px;
   @media (${device.mobileS}) {
@@ -241,7 +296,7 @@ export const MarginBox = styled.div`
   }
 
   @media (${device.laptop}) {
-    margin: 148px 0px;
+    margin: 180px 0px;
   }
 `;
 
@@ -303,13 +358,6 @@ export const Features = styled.div`
       }
     }
   }
-
-  /* @media(${device.tablet}){
-    
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-  } */
 
   @media (${device.laptop}) {
     flex-direction: row;

@@ -5,13 +5,16 @@ import {
   DrawerContent,
 } from "../../styles/bottomDrawer";
 
+
+
 type DrawerProps = {
   isOpen: boolean;
   onClose: () => void;
   children: React.ReactNode;
 };
 
-export const BottomDrawer = ({ isOpen, onClose, children }:DrawerProps) => {
+export const BottomDrawer = ({ isOpen, onClose, children }: DrawerProps) => {
+
   return (
     <>
       <Backdrop isOpen={isOpen} onClick={onClose} />

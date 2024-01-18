@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { device } from "../components/devices";
+
 export const Backdrop = styled.div<{ isOpen: boolean }>`
   display: ${({ isOpen }) => (isOpen ? "block" : "none")};
   position: fixed;
@@ -8,6 +10,10 @@ export const Backdrop = styled.div<{ isOpen: boolean }>`
   bottom: 0;
   background: rgba(0, 0, 0, 0.6);
   z-index: 1000;
+
+  @media (${device.tablet}) {
+    display: none;
+  }
 `;
 
 export const StyledDrawer = styled.div<{ isOpen: boolean }>`
@@ -21,6 +27,10 @@ export const StyledDrawer = styled.div<{ isOpen: boolean }>`
   transition: transform 0.3s ease;
   transform: translateY(${({ isOpen }) => (isOpen ? 0 : "100%")});
   z-index: 1001;
+
+  @media (${device.tablet}) {
+    display: none;
+  }
 `;
 
 export const DrawerHandle = styled.div`
@@ -32,7 +42,11 @@ export const DrawerHandle = styled.div`
   height: 4px;
   background-color: #ccc;
   border-radius: 2px;
-  margin:12px 0;
+  margin: 12px 0;
+
+  @media (${device.tablet}) {
+    display: none;
+  }
 `;
 
 export const DrawerContent = styled.div`
@@ -41,14 +55,18 @@ export const DrawerContent = styled.div`
 
   .bottom__nav_drawer {
     li {
-        margin-top: 20px;
-        margin: 20px 0;
+      margin-top: 20px;
+      margin: 20px 0;
       a {
         text-decoration: none;
         color: #000;
         font-weight: 700;
-        margin:20px 0;
+        margin: 20px 0;
       }
     }
+  }
+
+  @media (${device.tablet}) {
+    display: none;
   }
 `;
