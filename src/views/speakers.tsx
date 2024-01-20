@@ -20,7 +20,7 @@ export const Speakers = () => {
       </HeroSection>
 
       <Container>
-        {speakers.map((speaker, index) => (
+        {speakers?.map((speaker, index) => (
           <ProductDisplay key={index}>
             <ReOrderProducts index={index} className="product__img">
               <LazyLoadImage

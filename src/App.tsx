@@ -19,14 +19,7 @@ export default function App() {
       <Router>
         <ScrollToTop />
         <Routes>
-          <Route
-            path="/auth/login"
-            element={
-
-              <Login />
-              
-            }
-          />
+          <Route path="/auth/login" element={<Login />} />
           <Route
             path="/"
             element={
