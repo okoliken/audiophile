@@ -1,5 +1,5 @@
 import { CartItem, CartOverlay } from "../../styles/styles.styled";
-import { Button } from "../button/Button";
+// import { Button } from "../button/Button";
 import { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import CartIcon from "../../assets/cart.svg";
@@ -9,7 +9,7 @@ type CartProps = {
 };
 
 export const Cart = ({ isOpen, onClose }: CartProps) => {
-  const [totalCartItem, updateTotalCartItems] = useState(0);
+  const [totalCartItem] = useState(0);
   const modalRef = useRef<HTMLDivElement>(null);
   const body = document.querySelector("body");
 
