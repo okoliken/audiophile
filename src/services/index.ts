@@ -9,9 +9,20 @@ export const getHeadsets = async () => {
 
     return data
 };
+
 export const getSpeakers = async () => {
   const data = await supabase
   .from("SPEAKERS")
+  .select("image, product_name, description, sub_title, sub_title, slug")
+  .order("created_at");
+
+
+  return data
+};
+
+export const getEarphones = async () => {
+  const data = await supabase
+  .from("EARPHONES")
   .select("image, product_name, description, sub_title, sub_title, slug")
   .order("created_at");
 

@@ -21,9 +21,23 @@ export const ProductContainer = styled.div`
   .product__xy {
     width: 100%;
     max-width: 327px;
+    position: relative;
     height: 165px;
     border-radius: 8px;
     background: #f1f1f1;
+
+    .overlay {
+      position: absolute;
+      width: 132px;
+      height: 42px;
+      flex-shrink: 0;
+      border-radius: 262px;
+      opacity: 0.3;
+      background: #000;
+      filter: blur(21.746253967285156px);
+      bottom: 50%;
+      left: 30%;
+    }
   }
   @media (${device.mobileS}) {
     gap: 108px 0px;
@@ -84,6 +98,7 @@ export const ProductContainer = styled.div`
       height: 204px;
       border-radius: 8px;
       background: #f1f1f1;
+      position: relative;
 
       h3 {
         font-size: 18px;
@@ -93,6 +108,19 @@ export const ProductContainer = styled.div`
         letter-spacing: 1.286px;
         text-transform: uppercase;
         margin-bottom: 12px;
+      }
+
+      .overlay {
+        position: absolute;
+        width: 132px;
+        height: 42px;
+        flex-shrink: 0;
+        border-radius: 262px;
+        opacity: 0.3;
+        background: #000;
+        filter: blur(21.746253967285156px);
+        bottom: 58%;
+        left: 32%;
       }
     }
 
