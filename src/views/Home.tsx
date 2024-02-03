@@ -15,8 +15,9 @@ import bitMapTablet from "../assets/bitmap-tab.png";
 import bitMapLaptop from "../assets/bitmap-desk.png";
 import Earpods from "../assets/earpods.png";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-export const Home = () => {
+import { NavLink } from "react-router-dom";
 
+export const Home = () => {
   return (
     <>
       <HeroBanner>
@@ -31,7 +32,11 @@ export const Home = () => {
               made for the passionate music enthusiast.
             </p>
 
-            <Button buttonType={"primary"}>See Product</Button>
+            <Button buttonType={"primary"}>
+              <NavLink to={`/product/${"HEADSETS"}/${"xx99-mark-ii"}`}>
+                See Product
+              </NavLink>
+            </Button>
           </div>
         </Container>
       </HeroBanner>
@@ -67,7 +72,7 @@ export const Home = () => {
               </div>
 
               <LazyLoadImage
-              effect="opacity"
+                effect="opacity"
                 className="bit-mobile"
                 src={bitMapMobile}
                 alt="bitMapMobile"
@@ -75,7 +80,7 @@ export const Home = () => {
             </div>
             <div>
               <LazyLoadImage
-              effect="opacity"
+                effect="opacity"
                 className="bit-tablet"
                 src={bitMapTablet}
                 alt="bitMapTablet"
@@ -83,7 +88,7 @@ export const Home = () => {
             </div>
             <div>
               <LazyLoadImage
-              effect="opacity"
+                effect="opacity"
                 className="bit-desktop"
                 src={bitMapLaptop}
                 alt="bitMapLaptop"
@@ -108,4 +113,3 @@ export const Home = () => {
     </>
   );
 };
-

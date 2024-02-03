@@ -37,6 +37,11 @@ export const HeroBanner = styled.div`
   background-repeat: no-repeat;
   background-position: center center;
 
+  a{
+    color:inherit;
+    text-decoration: none;
+  }
+
   .hero__Text {
     padding-top: 200px;
     display: flex;
@@ -596,7 +601,7 @@ export const XZ7PRODUCT = styled.div`
   img.bit-mobile {
     display: block;
     width: 100%;
-    max-width: 529.956px;
+    max-width: 100%;
     height: 367px;
   }
   img.bit-tablet {
@@ -793,7 +798,7 @@ export const EarPodsCTA = styled.div`
       width: 100%;
       max-width: 731.539px;
       height: 577.247px;
-      object-fit: fill;
+      object-fit: cover;
       border-radius: 8px;
     }
     div.cta-container {

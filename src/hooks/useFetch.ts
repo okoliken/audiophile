@@ -13,7 +13,9 @@ export const useProducts = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
 
-  const fetchData = async (
+
+
+   const fetchData = async (
     fetchFunction: () => Promise<SupaBaseProductResponse>,
     setFunction: (data: Product[]) => void
   ) => {
@@ -22,14 +24,17 @@ export const useProducts = () => {
       if (response.data && Array.isArray(response.data)) {
         setFunction(response.data);
       } else {
-        console.error("Data is not an array", response.data);
+     
         setError(new Error("Data is not an array"));
       }
     } catch (error) {
-      console.error("Error fetching data:", error);
+    
       setError(error as Error);
     }
   };
+
+
+   
 
   useEffect(() => {
     const fetchAllData = async () => {

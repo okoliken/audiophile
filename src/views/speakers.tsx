@@ -10,6 +10,7 @@ import { Button } from "../components/button/Button";
 import { useContext } from "react";
 import { ProductContext } from "../context";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import { NavLink } from "react-router-dom";
 
 export const Speakers = () => {
   const speakers = useContext(ProductContext);
@@ -35,11 +36,16 @@ export const Speakers = () => {
               <h2>{speaker.product_name}</h2>
               <p>{speaker.description}</p>
 
-              <Button buttonType={"primary"}>See Product</Button>
+              <Button buttonType={"primary"}>
+                <NavLink to={`/product/${"SPEAKERS"}/${speaker.slug}`}>
+                  See Product
+                </NavLink>
+              </Button>
             </div>
           </ProductDisplay>
         ))}
       </Container>
+      
       <MarginBox>
         <ProductShowCase />
       </MarginBox>

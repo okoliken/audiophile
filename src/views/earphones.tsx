@@ -5,11 +5,12 @@ import {
   MarginBox,
   ReOrderProducts,
 } from "../styles/reuseables.styled";
-
+import { ProductContext } from "../context";
+import { NavLink } from "react-router-dom";
 import { ProductShowCase } from "../components/product/product-showcase";
 import { Button } from "../components/button/Button";
 import { useContext } from "react";
-import { ProductContext } from "../context";
+
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 export const Earphones = () => {
@@ -37,7 +38,11 @@ export const Earphones = () => {
               <h2>{earphone.product_name}</h2>
               <p>{earphone.description}</p>
 
-              <Button buttonType={"primary"}>See Product</Button>
+              <Button buttonType={"primary"}>
+              <NavLink to={`/product/${"EARPHONES"}/${earphone.slug}`}>
+                  See Product
+                </NavLink>
+              </Button>
             </div>
           </ProductDisplay>
         ))}

@@ -2,6 +2,12 @@ export interface similar_products {
   img: string;
   title: string;
 }
+
+interface InBox {
+  x: string;
+  y: string
+}
+
 export interface ProductDetails {
   price: number;
   feature: string[];
@@ -12,11 +18,15 @@ export interface ProductDetails {
 
 export interface ProductPrototype {
   sub_title: string | null;
-  title: string;
+  product_name: string;
   description: string;
   image: string;
   slug: string;
   details: ProductDetails;
+  price:number;
+  features:string;
+  in_box:InBox[];
+  images:string[]
 }
 export interface Product {
   sub_title: string | null;
