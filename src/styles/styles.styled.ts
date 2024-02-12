@@ -1288,6 +1288,7 @@ export const SimilarProducts = styled.div`
         img {
           width: 148.305px;
           height: 193px;
+          object-fit:contain;
         }
       }
     }

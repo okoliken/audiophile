@@ -14,9 +14,17 @@ import { ScrollToTop } from "./hooks/scroll-to-top";
 import { ProductContext } from "./context";
 import { FullScreenPreloader, Loader } from "./components/Preloader";
 import { useProducts } from "./hooks/useFetch";
-
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 export default function App() {
   const { headsets, speakers, earphone, loading, error } = useProducts();
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        refetchOnWindowFocus: false,
+      },
+    },
+  });
 
   if (loading) {
     return (
@@ -31,7 +39,7 @@ export default function App() {
   }
 
   return (
-    <>
+    <QueryClientProvider client={queryClient}>
       <Router>
         <RouteLoadingBar />
         <ScrollToTop />
@@ -85,6 +93,7 @@ export default function App() {
           />
         </Routes>
       </Router>
-    </>
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
   );
 }

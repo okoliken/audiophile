@@ -20,9 +20,6 @@ const NavBar = styled.div`
   @media (${device.tablet}) {
     padding: 0px 34px;
   }
-
-  @media (${device.laptop}) {
-  }
 `;
 
 export const Navbar = () => {

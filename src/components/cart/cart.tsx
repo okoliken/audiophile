@@ -3,6 +3,9 @@ import { CartItem, CartOverlay } from "../../styles/styles.styled";
 import { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import CartIcon from "../../assets/cart.svg";
+import { useQuery } from "@tanstack/react-query";
+import { getCart } from "../../services";
+
 type CartProps = {
   onClose: () => void;
   isOpen: boolean;
@@ -12,6 +15,13 @@ export const Cart = ({ isOpen, onClose }: CartProps) => {
   const [totalCartItem] = useState(0);
   const modalRef = useRef<HTMLDivElement>(null);
   const body = document.querySelector("body");
+
+  const { data, isFetching, error } = useQuery({
+    queryKey: ["cart"],
+    queryFn: getCart,
+    staleTime: 3000,
+    refetchOnReconnect: true,
+  });
 
   const handleOutsideClick = (event: React.MouseEvent) => {
     if (body && !modalRef?.current?.contains(event.target as Node)) {
@@ -52,17 +62,25 @@ export const Cart = ({ isOpen, onClose }: CartProps) => {
               </div>
 
               <div className="empty__cart">
-                <img
-                  src={CartIcon}
-                  alt="empty car icon"
-                  style={{ aspectRatio: "7/2" }}
-                />
-
-                <p>Your cart is empty : (</p>
+                {(data?.length ?? 0) === 0 && !isFetching ? (
+                  <>
+                    <img
+                      src={CartIcon}
+                      alt="empty cart icon"
+                      style={{ aspectRatio: "7/2" }}
+                    />
+                    <p>Your cart is empty : (</p>
+                  </>
+                ) : (
+                  <> <div className="cart-loader"></div></>
+                )}
+                {/* {isFetching && (data?.length)  ? <div className="cart-loader"></div> : <>data</>} */}
+                {error ? <div>{error?.message}</div> : <></>}
               </div>
-              
+
               {/* <div className="cart__actions">
                 <Button buttonType={"primary"}>checkout</Button>
+                <div className="cart-loader"></div>
               </div> */}
             </CartItem>
           </motion.div>

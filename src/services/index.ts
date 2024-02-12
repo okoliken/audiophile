@@ -1,8 +1,8 @@
 import { supabase } from "../server/supabase";
 import { ProductPrototype } from "../utils/types";
-import {  PostgrestMaybeSingleResponse } from "@supabase/supabase-js";
+import {  PostgrestSingleResponse } from "@supabase/supabase-js";
 
-type SupaBaseProductResponse = PostgrestMaybeSingleResponse<(ProductPrototype | null) >;
+type SupaBaseProductResponse = PostgrestSingleResponse<(ProductPrototype[] | null) >;
 
 export const getHeadsets = async () => {
   const data = await supabase
@@ -27,6 +27,18 @@ export const getEarphones = async () => {
     .from("EARPHONES")
     .select("image, product_name, description, sub_title, sub_title, slug")
     .order("created_at");
+
+  return data;
+};
+export const getCart = async () => {
+  const { data, error } = await supabase
+    .from("CART")
+    .select("product_image, product_name, quantity, total_price, price, user_id")
+    .order("created_at");
+
+  if (error) {
+    throw new Error(error.message);
+  }
 
   return data;
 };

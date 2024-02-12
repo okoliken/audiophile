@@ -26,7 +26,8 @@ export interface ProductPrototype {
   price:number;
   features:string;
   in_box:InBox[];
-  images:string[]
+  images:string[];
+  similar_products:{ x: string; y: string }[]
 }
 export interface Product {
   sub_title: string | null;

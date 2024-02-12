@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-
-import { Parser } from "html-to-react";
+import { useParams, useNavigate } from "react-router-dom";
+import { useAlert } from "../../hooks/useAlert";
+import parse from "html-react-parser";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import {
   ProductDisplay,
@@ -18,14 +18,15 @@ import { getSingleProduct } from "../../services";
 
 export const ProductDetails = () => {
   const [quantity, updateQuantity] = useState(1);
-  const [singleProduct, setSingleProduct] = useState<
-    (ProductPrototype | null) | null
-  >(null);
+
+  const [singleProduct, setSingleProduct] = useState<ProductPrototype | null>(
+    null
+  );
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<Error | null>(null);
 
   const { slug, name } = useParams();
-  const htmlParser = new Parser();
+  const { showAlert } = useAlert();
+  const navigate = useNavigate();
 
   const increaseQuantity = () => {
     updateQuantity((prev) => prev + 1);
@@ -37,9 +38,33 @@ export const ProductDetails = () => {
     } else return;
   };
 
-  const products = singleProduct?.features
+  const convertToObject = (productDetail: ProductPrototype[]) => {
+    const product = productDetail?.map((product: ProductPrototype) => {
+      return product;
+    });
+  //  @ts-expect-error error expected
+
+    setSingleProduct(...product);
+  };
+
+  function handleBack() {
+    navigate(-1);
+  }
+
+  const products_features = singleProduct?.features
     ? JSON.parse(singleProduct?.features)
     : [];
+
+  const similarProducts = singleProduct?.similar_products
+    ?.map((product: { [x: string]: unknown }) => {
+      try {
+        return JSON.parse(String(product));
+      } catch (e) {
+        console.error("Failed to parse product JSON", e);
+        return null;
+      }
+    })
+    .filter(Boolean); // This will remove any null values resulting from parse failures
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -47,14 +72,13 @@ export const ProductDetails = () => {
         setLoading(true);
         const response = await getSingleProduct(name, slug);
         if (response.data) {
-          setSingleProduct(...response.data);
+          convertToObject(response.data);
           setLoading(false);
         } else {
-          setError(new Error("Data is not an array"));
+          setLoading(false);
         }
       } catch (error) {
         setLoading(false);
-        setError(error as Error);
       }
     };
 
@@ -63,13 +87,26 @@ export const ProductDetails = () => {
 
   return (
     <>
+      {loading ? (
+        <div className="alpha__loader">
+          <div className="loader"></div>
+        </div>
+      ) : (
+        <></>
+      )}
       <HeroSection style={{ height: "110px" }}></HeroSection>
 
       <Container>
-
+        <p onClick={handleBack} className="go-back">
+          Go Back
+        </p>
         <ProductDisplay>
           <div className="product__img">
-            <LazyLoadImage effect="blur" src={singleProduct?.image} alt="product image" />
+            <LazyLoadImage
+              effect="blur"
+              src={singleProduct?.image}
+              alt="product image"
+            />
 
             <div className={"oval__shadow"}></div>
           </div>
@@ -88,7 +125,9 @@ export const ProductDetails = () => {
                 increaseQuantity={increaseQuantity}
                 decreaseQuantity={decreaseQuantity}
               />
-              <Button buttonType={"primary"}>ADD TO CART</Button>
+              <Button onClick={showAlert} buttonType={"primary"}>
+                ADD TO CART
+              </Button>
             </div>
           </div>
         </ProductDisplay>
@@ -97,15 +136,15 @@ export const ProductDetails = () => {
           <div className="features">
             <h2>FEATURES</h2>
 
-            {products?.map((feature: string, index: number) => (
-              <div key={index}>{htmlParser.parse(feature)}</div>
+            {products_features?.map((feature: string, index: number) => (
+              <div key={index}>{parse(feature)}</div>
             ))}
           </div>
 
           <div className="inBox">
             <h2>In the box</h2>
             <div>
-              {singleProduct?.in_box.map((box, index: number) => (
+              {singleProduct?.in_box?.map((box, index: number) => (
                 <div className="box-content" key={index}>
                   <span id={"tag"}>{box.x}</span>
                   <span>{box.y}</span>
@@ -132,15 +171,15 @@ export const ProductDetails = () => {
           </div>
         </ProductGrid>
 
-        {/* <SimilarProducts>
+        <SimilarProducts>
           <h2>you may also like</h2>
 
           <div className={"products"}>
-            {product.details.similar_products.map(
-              (product: { img: string; title: string }, index: number) => (
+            {similarProducts?.map(
+              (product: { image: string; title: string }, index: number) => (
                 <div key={index}>
                   <div className="product">
-                    <img src={product.img} alt={product.title} />
+                    <img src={product.image} alt={product.title} />
                   </div>
                   <p>{product.title}</p>
                   <Button buttonType={"primary"}>See Product</Button>
@@ -148,12 +187,8 @@ export const ProductDetails = () => {
               )
             )}
           </div>
-        </SimilarProducts>  */}
+        </SimilarProducts>
       </Container>
     </>
   );
 };
-
-
-
-
