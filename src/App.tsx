@@ -16,6 +16,10 @@ import { FullScreenPreloader, Loader } from "./components/Preloader";
 import { useProducts } from "./hooks/useFetch";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { CheckOut } from "./views/checkout";
+
+
+
 export default function App() {
   const { headsets, speakers, earphone, loading, error } = useProducts();
   const queryClient = new QueryClient({
@@ -88,6 +92,14 @@ export default function App() {
             element={
               <Layout>
                 <ProductDetails />
+              </Layout>
+            }
+          />
+          <Route
+            path="/product/check-out"
+            element={
+              <Layout>
+                <CheckOut />
               </Layout>
             }
           />

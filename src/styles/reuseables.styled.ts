@@ -281,6 +281,26 @@ export const Container = styled.div`
   }
 `;
 
+export const Card = styled.div`
+  max-width: 100%;
+  padding: 10px;
+  background-color: #fff;
+  width: 100%;
+  border-radius: 8px;
+  @media (${device.tablet}) {
+    padding: 15px;
+  }
+
+  @media (${device.laptop}) {
+    padding: 30px;
+
+    h1 {
+      font-size: 32px;
+      line-height: 36px;
+    }
+  }
+`;
+
 export const ReOrderProducts = styled.div<{ index: number }>`
   order: "unset";
 
@@ -398,6 +418,37 @@ export const Features = styled.div`
           opacity: 0.5;
         }
       }
+    }
+  }
+`;
+
+export const GridBox = styled.div`
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 20px 0px;
+  margin-top: 105px;
+  @media (${device.tablet}) {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 0 20px;
+    margin-top: 15px;
+
+
+    .cc-8{
+      grid-column: span 12;
+    }
+    .cc-4{
+      grid-column: span 12;
+    }
+  }
+  @media (${device.laptop}) {
+    margin-top: 105px;
+
+    .cc-8{
+      grid-column: span 8;
+    }
+    .cc-4{
+      grid-column: span 4;
     }
   }
 `;

@@ -35,7 +35,9 @@ export const HeadPhones = () => {
               <h2>{headset.product_name}</h2>
               <p>{headset.description}</p>
               <Button buttonType={"primary"}>
-                <NavLink to={`/product/${'HEADSETS'}/${headset.slug}`}>See Product</NavLink>
+                <NavLink to={`/product/${"HEADSETS"}/${headset.slug}`}>
+                  See Product
+                </NavLink>
               </Button>
             </div>
           </ProductDisplay>
