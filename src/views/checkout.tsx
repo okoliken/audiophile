@@ -50,9 +50,18 @@ export const CheckOut = () => {
                 }}
               >
                 <Form>
-                  <Field name="name" type="text" />
-                  <Field name="email" type="email" />
-                
+                  <div className="form-group">
+                    <label>Name</label>
+                    <Field name="name" type="text" />
+                  </div>
+                  <div className="form-group">
+                    <label>Email Address</label>
+                    <Field name="email" type="email" />
+                  </div>
+                  <div className="form-group">
+                    <label>Phone Number</label>
+                    <Field name="email" type="email" />
+                  </div>
                 </Form>
               </Formik>
             </div>

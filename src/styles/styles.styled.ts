@@ -229,6 +229,9 @@ export const SubSection = styled.div`
   img {
     border-radius: 10px;
     max-width: 100%;
+    height: auto; /* Maintain aspect ratio */
+    flex-shrink: 0; /* Prevent flex items from shrinking */
+    object-fit: cover; /* Ensure images cover their area without stretching */
   }
   .subsection__headset_xy_image-tablet {
     display: none;
