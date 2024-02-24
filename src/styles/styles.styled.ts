@@ -1297,3 +1297,44 @@ export const SimilarProducts = styled.div`
     }
   }
 `;
+
+
+export const PaymentOptionCard = styled.div`
+border: 1px solid #cfcfcf;
+width: 100%;
+max-width: 309px;
+padding: 20px;
+cursor: pointer;
+margin-bottom: 12px;
+border-radius: 8px;
+display: flex;
+transition: all 0.2s;
+
+&:hover {
+  border: 1px solid #d87d4a;
+}
+align-items: center;
+gap: 0 16px;
+.checkb-x {
+  height: 20px;
+  width: 20px;
+  border: 1px solid #cfcfcf;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .checked {
+    width: 10px;
+    height: 10px;
+    background-color: #d87d4a;
+    border-radius: 100%;
+  }
+}
+
+span {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 19.12px;
+  letter-spacing: -0.25px;
+}
+`;

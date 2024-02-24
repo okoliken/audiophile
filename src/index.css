@@ -49,7 +49,7 @@ text-align: left;
  }
  input{
   display: block;
-  padding: 8px;
+  padding: 20px;
   height: 56px;
   width: 100%;
   border-radius: 8px;
@@ -128,4 +128,20 @@ cursor: pointer;
 }
 @keyframes l24 {
   100% {transform: rotate(1turn)}
+}
+
+
+.checkout-action{
+  position: absolute;
+  top: 10%;
+  background-size: #fff;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.checkout-action button{
+ flex-grow: 1;
 }

@@ -287,17 +287,33 @@ export const Card = styled.div`
   background-color: #fff;
   width: 100%;
   border-radius: 8px;
+ 
   @media (${device.tablet}) {
     padding: 15px;
   }
 
   @media (${device.laptop}) {
-    padding: 30px;
+    padding: 42px;
+
+    p {
+      color: #d87d4a;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 25px;
+      letter-spacing: 0.9285714030265808px;
+      text-align: left;
+      text-transform: uppercase;
+      margin-top: 30px;
+      margin-bottom: 10px;
+    }
 
     h1 {
       font-size: 32px;
       line-height: 36px;
+      margin-bottom: 12px;
     }
+
+    
   }
 `;
 
@@ -433,22 +449,59 @@ export const GridBox = styled.div`
     gap: 0 20px;
     margin-top: 15px;
 
-
-    .cc-8{
+    .cc-8 {
       grid-column: span 12;
     }
-    .cc-4{
+    .cc-4 {
       grid-column: span 12;
     }
   }
   @media (${device.laptop}) {
     margin-top: 105px;
 
-    .cc-8{
+    .cc-8 {
       grid-column: span 8;
     }
-    .cc-4{
+    .cc-4 {
       grid-column: span 4;
+      height: 612px;
+      overflow-y: auto;
+
+      .product-details{
+       margin-top: 25px;
+      }
     }
+  }
+`;
+
+
+export const Grid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 20px 0px;
+  margin-top: 105px;
+  @media (${device.tablet}) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0 20px;
+    margin-top: 15px;
+  }
+  @media (${device.laptop}) {
+   
+  }
+`;
+
+
+export const FlexItem = styled.div<{ justify?: string; margin?: string }>`
+  display: flex;
+  align-items: center;
+  gap: 0 12px;
+  margin-bottom: ${(props) => props.margin};
+  justify-content: space-${(props) => props.justify};
+
+
+  h4{
+    font-size: 15px;
+    font-weight: 700;
   }
 `;

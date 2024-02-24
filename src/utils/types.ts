@@ -36,3 +36,9 @@ export interface Product {
   image: string;
   slug: string;
 }
+
+
+export interface Options {
+  name:string,
+  value:string
+}
