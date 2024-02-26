@@ -22,6 +22,8 @@ export const CheckOut = () => {
     value: "",
   });
 
+  
+
   const selectPaymentOption = (val: Options) => {
     setPaymentOption(val);
   };
@@ -190,7 +192,7 @@ export const CheckOut = () => {
             <div style={{ height: "100%" }}>
               <h2>Summary</h2>
 
-              {[...Array(5)].map((_, index) => (
+              {[...Array(3)].map((_, index) => (
                 <List key={index}>
                   <span>x1</span>
                 </List>

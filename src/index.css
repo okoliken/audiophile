@@ -132,10 +132,10 @@ cursor: pointer;
 
 
 .checkout-action{
-  position: absolute;
-  top: 10%;
+  position: relative;
+  margin: 25px 0px;
   background-size: #fff;
-  height: 100%;
+  height: auto;
   display: flex;
   align-items: center;
   justify-content: center;

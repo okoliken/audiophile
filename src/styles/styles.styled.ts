@@ -1300,7 +1300,7 @@ export const SimilarProducts = styled.div`
 
 
 export const PaymentOptionCard = styled.div`
-border: 1px solid #cfcfcf;
+
 width: 100%;
 max-width: 309px;
 padding: 20px;
@@ -1311,7 +1311,7 @@ display: flex;
 transition: all 0.2s;
 
 &:hover {
-  border: 1px solid #d87d4a;
+  border: 1px solid #d87d4a !important;
 }
 align-items: center;
 gap: 0 16px;
