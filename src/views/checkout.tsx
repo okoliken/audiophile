@@ -2,7 +2,6 @@ import {
   HeroSection,
   Container,
   Card,
-  GridBox,
   Grid,
 } from "../styles/reuseables.styled";
 import { useNavigate } from "react-router-dom";
@@ -10,25 +9,12 @@ import { useEffect, useState } from "react";
 import { Formik, Field, Form } from "formik";
 import { Button } from "../components/button/Button";
 
-import { Options } from "../utils/types";
+import { Options, FormState } from "../utils/types";
 import { List } from "../components/product/list";
-import { FlexItem } from "../styles/reuseables.styled";
+import { FlexItem, GridBox } from "../styles/reuseables.styled";
 import { PaymentOptionCard } from "../styles/styles.styled";
 
 import { FormSchema } from "../utils/schema";
-
-
-interface FormState {
-  field1: string;
-  field2: string;
-  field3: string;
-  field4: string;
-  field5: string;
-  field6: string;
-  field7: string;
-  field8: string;
-  field9: string;
-}
 
 const initialState: FormState = {
   field1: "",
@@ -86,22 +72,23 @@ export const CheckOut = () => {
             Go Back
           </p>
 
-          <GridBox>
-            <Card className="cc-8">
-              <div>
-                <h1>CHECKOUT</h1>
+          <Formik
+            initialValues={initialState}
+            onSubmit={async (values) => {
+              await new Promise((resolve) => setTimeout(resolve, 500));
+              alert(JSON.stringify(values, null, 2));
+            }}
+            validationSchema={FormSchema}
+          >
+            {({ errors, touched }) => (
+              <Form>
+                <GridBox>
+                  <Card className="cc-8">
+                    <div>
+                      <h1>CHECKOUT</h1>
 
-                <p>billing details</p>
-                <Formik
-                  initialValues={initialState}
-                  onSubmit={async (values) => {
-                    await new Promise((resolve) => setTimeout(resolve, 500));
-                    alert(JSON.stringify(values, null, 2));
-                  }}
-                  validationSchema={FormSchema}
-                >
-                  {({ errors, touched }) => (
-                    <Form>
+                      <p>billing details</p>
+
                       <Grid>
                         <div
                           className={`${
@@ -275,57 +262,53 @@ export const CheckOut = () => {
                             } form-group`}
                           >
                             <label>e-Money PIN</label>
-                            <Field
-                              placeholder="6891"
-                              name="pin"
-                              type="text"
-                            />
+                            <Field placeholder="6891" name="pin" type="text" />
                             {errors.field9 && touched.field9 ? (
                               <span>{errors.field9}</span>
                             ) : null}
                           </div>
                         </Grid>
                       )}
-                    </Form>
-                  )}
-                </Formik>
-              </div>
-            </Card>
-            <Card className="cc-4 shipping-info">
-              <div style={{ height: "100%" }}>
-                <h2>Summary</h2>
+                    </div>
+                  </Card>
+                  <Card className="cc-4 shipping-info">
+                    <div style={{ height: "100%" }}>
+                      <h2>Summary</h2>
 
-                {[...Array(3)].map((_, index) => (
-                  <List key={index}>
-                    <span>x1</span>
-                  </List>
-                ))}
+                      {[...Array(3)].map((_, index) => (
+                        <List key={index}>
+                          <span>x1</span>
+                        </List>
+                      ))}
 
-                <div className="product-details">
-                  <FlexItem margin="8px" justify="between">
-                    <h4 className="labels">TOTAL</h4>
-                    <h4>$ 5,396</h4>
-                  </FlexItem>
-                  <FlexItem margin="8px" justify="between">
-                    <h4 className="labels">SHIPPING</h4>
-                    <h4>$ 5,396</h4>
-                  </FlexItem>
-                  <FlexItem margin="20px" justify="between">
-                    <h4 className="labels">VAT (INCLUDED)</h4>
-                    <h4>$ 5,396</h4>
-                  </FlexItem>
-                  <FlexItem margin="16px" justify="between">
-                    <h4 className="labels">GRAND TOTAL</h4>
-                    <h4 className="total">$ 5,396</h4>
-                  </FlexItem>
-                </div>
+                      <div className="product-details">
+                        <FlexItem margin="8px" justify="between">
+                          <h4 className="labels">TOTAL</h4>
+                          <h4>$ 5,396</h4>
+                        </FlexItem>
+                        <FlexItem margin="8px" justify="between">
+                          <h4 className="labels">SHIPPING</h4>
+                          <h4>$ 5,396</h4>
+                        </FlexItem>
+                        <FlexItem margin="20px" justify="between">
+                          <h4 className="labels">VAT (INCLUDED)</h4>
+                          <h4>$ 5,396</h4>
+                        </FlexItem>
+                        <FlexItem margin="16px" justify="between">
+                          <h4 className="labels">GRAND TOTAL</h4>
+                          <h4 className="total">$ 5,396</h4>
+                        </FlexItem>
+                      </div>
 
-                <div className="checkout-action">
-                  <Button buttonType={"primary"}>CONTINUE & PAY</Button>
-                </div>
-              </div>
-            </Card>
-          </GridBox>
+                      <div className="checkout-action">
+                        <Button buttonType={"primary"}>CONTINUE & PAY</Button>
+                      </div>
+                    </div>
+                  </Card>
+                </GridBox>
+              </Form>
+            )}
+          </Formik>
         </div>
       </Container>
     </>
