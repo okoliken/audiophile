@@ -6,8 +6,8 @@ import {
   Grid,
 } from "../styles/reuseables.styled";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState, useReducer } from "react";
-import { Formik, Field, Form, ErrorMessage } from "formik";
+import { useEffect, useState } from "react";
+import { Formik, Field, Form } from "formik";
 import { Button } from "../components/button/Button";
 
 import { Options } from "../utils/types";
@@ -15,13 +15,9 @@ import { List } from "../components/product/list";
 import { FlexItem } from "../styles/reuseables.styled";
 import { PaymentOptionCard } from "../styles/styles.styled";
 
-type ReducerAction = {
-  type: string;
-  fieldName: string;
-  value: string;
-};
+import { FormSchema } from "../utils/schema";
 
-type ChangeEvent = React.ChangeEvent<HTMLInputElement>;
+
 interface FormState {
   field1: string;
   field2: string;
@@ -33,7 +29,6 @@ interface FormState {
   field8: string;
   field9: string;
 }
-
 
 const initialState: FormState = {
   field1: "",
@@ -53,56 +48,6 @@ export const CheckOut = () => {
     name: "",
     value: "",
   });
-
-  function formReducer(state: FormState, action: { type: string; fieldName: keyof FormState; value: string }): FormState {
-    switch (action.type) {
-      case "updateField":
-        return { ...state, [action.fieldName]: action.value };
-      default:
-        throw new Error();
-    }
-  }
-
- 
-
-  const [state, dispatch] = useReducer(formReducer, initialState);
-
-  const updateField = (fieldName: keyof FormState, value: string) => {
-    dispatch({ type: "updateField", fieldName, value });
-  };
-
-  const validate = (values: FormState) => {
-
-    const errors:FormState  = {
-      field1: "",
-      field2: "",
-      field3: "",
-      field4: "",
-      field5: "",
-      field6: "",
-      field7: "",
-      field8: "",
-      field9: "",
-    };
-
-    if (!values.field2) {
-
-      errors.field2 = 'Required';
-
-    } else if (
-
-      !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.field1)
-
-    ) {
-
-      errors.field2 = 'Invalid email address';
-
-    }
-
-    return errors;
-
-  }
-
   const selectPaymentOption = (val: Options) => {
     setPaymentOption(val);
   };
@@ -136,221 +81,252 @@ export const CheckOut = () => {
       <HeroSection style={{ height: "110px" }}></HeroSection>
 
       <Container>
-        <p onClick={handleBack} className="go-back">
-          Go Back
-        </p>
-        <GridBox>
-          <Card className="cc-8">
-            <div>
-              <h1>CHECKOUT</h1>
+        <div className="padded">
+          <p onClick={handleBack} className="go-back">
+            Go Back
+          </p>
 
-              <p>billing details</p>
-              <Formik
-                initialValues={initialState}
-                onSubmit={async (values) => {
-                  await new Promise((resolve) => setTimeout(resolve, 500));
-                  alert(JSON.stringify(values, null, 2));
-                }}
-                validate={values => validate(values)}
-              >
-                <Form>
-                  <Grid>
-                    <div className="form-group">
-                      <label>Name</label>
-                      <Field
-                        placeholder="Alexei Ward"
-                        name="field1"
-                        value={state.field1}
-                        onChange={(e: ChangeEvent) =>
-                          updateField("field1", e.target.value)
-                        }
-                        type="text"
-                      />
-                       <ErrorMessage name="field1" component="p" />
-                    </div>
-                    <div className="form-group">
-                      <label>Email Address</label>
-                      <Field
-                        placeholder="alexei@mail.com"
-                        name="field2"
-                        value={state.field2}
-                        onChange={(e: ChangeEvent) =>
-                          updateField("field2", e.target.value)
-                        }
-                        type="email"
-                      />
-                         <ErrorMessage name="field2" component="span" />
-                    </div>
-                  </Grid>
-                  <div className="form-group">
-                    <label>Phone Number</label>
-                    <Field
-                      placeholder="+1 202-555-0136"
-                      name="field3"
-                      value={state.field3}
-                      onChange={(e: ChangeEvent) =>
-                        updateField("field3", e.target.value)
-                      }
-                      type="text"
-                    />
-                     <ErrorMessage name="field3" component="p" />
-                  </div>
+          <GridBox>
+            <Card className="cc-8">
+              <div>
+                <h1>CHECKOUT</h1>
 
-                  <p>shipping info</p>
-                  <div className="form-group">
-                    <label>Address</label>
-                    <Field
-                      placeholder="1137 Williams Avenue"
-                      name="field4"
-                      value={state.field4}
-                      onChange={(e: ChangeEvent) =>
-                        updateField("field4", e.target.value)
-                      }
-                      type="text"
-                    />
-                     <ErrorMessage name="field4" component="p" />
-                  </div>
-                  <Grid>
-                    <div className="form-group">
-                      <label>ZIP Code</label>
-                      <Field
-                        placeholder="10001"
-                        value={state.field5}
-                        onChange={(e: ChangeEvent) =>
-                          updateField("field5", e.target.value)
-                        }
-                        name="email"
-                        type="email"
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label>City</label>
-                      <Field
-                        placeholder="New York"
-                        value={state.field6}
-                        onChange={(e: ChangeEvent) =>
-                          updateField("field6", e.target.value)
-                        }
-                        name="email"
-                        type="email"
-                      />
-                    </div>
-                  </Grid>
-
-                  <Grid>
-                    <div className="form-group">
-                      <label>Country</label>
-                      <Field
-                        placeholder="United States"
-                        name="country"
-                        value={state.field7}
-                        onChange={(e: ChangeEvent) =>
-                          updateField("field7", e.target.value)
-                        }
-                        type="email"
-                      />
-                    </div>
-                  </Grid>
-
-                  <p>Payment details</p>
-                  <Grid>
-                    <div className="form-group">
-                      <label>Payment Method</label>
-                    </div>
-
-                    <div>
-                      {paymentOptions.map((option, index) => (
-                        <PaymentOptionCard
-                          style={{
-                            border: `${
-                              paymentOption.name === option.name
-                                ? "1px solid #d87d4a"
-                                : "1px solid #cfcfcf"
-                            }`,
-                          }}
-                          key={index}
-                          onClick={() => selectPaymentOption(option)}
+                <p>billing details</p>
+                <Formik
+                  initialValues={initialState}
+                  onSubmit={async (values) => {
+                    await new Promise((resolve) => setTimeout(resolve, 500));
+                    alert(JSON.stringify(values, null, 2));
+                  }}
+                  validationSchema={FormSchema}
+                >
+                  {({ errors, touched }) => (
+                    <Form>
+                      <Grid>
+                        <div
+                          className={`${
+                            errors.field1 && touched.field1 ? "error" : null
+                          } form-group`}
                         >
-                          <div className="checkb-x">
-                            <div
-                              className={`${
-                                paymentOption.name === option.name && "checked"
-                              }`}
-                            ></div>
+                          <label>Name</label>
+
+                          <Field
+                            placeholder="Alexei Ward"
+                            name="field1"
+                            type="text"
+                          />
+                          {errors.field1 && touched.field1 ? (
+                            <span>{errors.field1}</span>
+                          ) : null}
+                        </div>
+                        <div
+                          className={`${
+                            errors.field2 && touched.field2 ? "error" : null
+                          } form-group`}
+                        >
+                          <label>Email Address</label>
+                          <Field
+                            placeholder="alexei@mail.com"
+                            name="field2"
+                            type="email"
+                          />
+                          {errors.field2 && touched.field2 ? (
+                            <span>{errors.field2}</span>
+                          ) : null}
+                        </div>
+                      </Grid>
+                      <div
+                        className={`${
+                          errors.field3 && touched.field3 ? "error" : null
+                        } form-group`}
+                      >
+                        <label>Phone Number</label>
+                        <Field
+                          placeholder="+1 202-555-0136"
+                          name="field3"
+                          type="text"
+                        />
+                        {errors.field3 && touched.field3 ? (
+                          <span>{errors.field3}</span>
+                        ) : null}
+                      </div>
+
+                      <p>shipping info</p>
+                      <div
+                        className={`${
+                          errors.field4 && touched.field4 ? "error" : null
+                        } form-group`}
+                      >
+                        <label>Address</label>
+                        <Field
+                          placeholder="1137 Williams Avenue"
+                          name="field4"
+                          type="text"
+                        />
+                        {errors.field4 && touched.field4 ? (
+                          <span>{errors.field4}</span>
+                        ) : null}
+                      </div>
+                      <Grid>
+                        <div
+                          className={`${
+                            errors.field5 && touched.field5 ? "error" : null
+                          } form-group`}
+                        >
+                          <label>ZIP Code</label>
+                          <Field
+                            placeholder="10001"
+                            type="email"
+                            name="field5"
+                          />
+                          {errors.field5 && touched.field5 ? (
+                            <span>{errors.field5}</span>
+                          ) : null}
+                        </div>
+                        <div
+                          className={`${
+                            errors.field6 && touched.field6 ? "error" : null
+                          } form-group`}
+                        >
+                          <label>City</label>
+                          <Field
+                            placeholder="New York"
+                            name="field6"
+                            type="email"
+                          />
+                          {errors.field6 && touched.field6 ? (
+                            <span>{errors.field6}</span>
+                          ) : null}
+                        </div>
+                      </Grid>
+
+                      <Grid>
+                        <div
+                          className={`${
+                            errors.field7 && touched.field7 ? "error" : null
+                          } form-group`}
+                        >
+                          <label>Country</label>
+                          <Field
+                            placeholder="United States"
+                            name="field7"
+                            type="email"
+                          />
+                          {errors.field7 && touched.field7 ? (
+                            <span>{errors.field7}</span>
+                          ) : null}
+                        </div>
+                      </Grid>
+
+                      <p>Payment details</p>
+                      <Grid>
+                        <div className="form-group">
+                          <label>Payment Method</label>
+                        </div>
+
+                        <div>
+                          {paymentOptions.map((option, index) => (
+                            <PaymentOptionCard
+                              style={{
+                                border: `${
+                                  paymentOption.name === option.name
+                                    ? "1px solid #d87d4a"
+                                    : "1px solid #cfcfcf"
+                                }`,
+                              }}
+                              key={index}
+                              onClick={() => selectPaymentOption(option)}
+                            >
+                              <div className="checkb-x">
+                                <div
+                                  className={`${
+                                    paymentOption.name === option.name &&
+                                    "checked"
+                                  }`}
+                                ></div>
+                              </div>
+                              <span>{option.name}</span>
+                            </PaymentOptionCard>
+                          ))}
+                        </div>
+                      </Grid>
+
+                      {paymentOption.value === "online-payment" && (
+                        <Grid>
+                          <div
+                            className={`${
+                              errors.field8 && touched.field8 ? "error" : null
+                            } form-group`}
+                          >
+                            <label>e-Money Number</label>
+                            <Field
+                              placeholder="238521993"
+                              name="email"
+                              type="email"
+                            />
+
+                            {errors.field8 && touched.field8 ? (
+                              <span>{errors.field8}</span>
+                            ) : null}
                           </div>
-                          <span>{option.name}</span>
-                        </PaymentOptionCard>
-                      ))}
-                    </div>
-                  </Grid>
-
-                  {paymentOption.value === "online-payment" && (
-                    <Grid>
-                      <div className="form-group">
-                        <label>e-Money Number</label>
-                        <Field
-                          placeholder="238521993"
-                          name="email"
-                          type="email"
-                          value={state.field8}
-                          onChange={(e: ChangeEvent) =>
-                            updateField("field8", e.target.value)
-                          }
-                        />
-                      </div>
-                      <div className="form-group">
-                        <label>e-Money PIN</label>
-                        <Field
-                          placeholder="6891"
-                          name="pin"
-                          type="password"
-                          value={state.field9}
-                          onChange={(e: ChangeEvent) =>
-                            updateField("field9", e.target.value)
-                          }
-                        />
-                      </div>
-                    </Grid>
+                          <div
+                            className={`${
+                              errors.field9 && touched.field9 ? "error" : null
+                            } form-group`}
+                          >
+                            <label>e-Money PIN</label>
+                            <Field
+                              placeholder="6891"
+                              name="pin"
+                              type="text"
+                            />
+                            {errors.field9 && touched.field9 ? (
+                              <span>{errors.field9}</span>
+                            ) : null}
+                          </div>
+                        </Grid>
+                      )}
+                    </Form>
                   )}
-                </Form>
-              </Formik>
-            </div>
-          </Card>
-          <Card className="cc-4 shipping-info">
-            <div style={{ height: "100%" }}>
-              <h2>Summary</h2>
-
-              {[...Array(3)].map((_, index) => (
-                <List key={index}>
-                  <span>x1</span>
-                </List>
-              ))}
-
-              <div className="product-details">
-                <FlexItem margin="16px" justify="between">
-                  <h4>TOTAL</h4>
-                  <h4>$ 5,396</h4>
-                </FlexItem>
-                <FlexItem margin="16px" justify="between">
-                  <h4>SHIPPING</h4>
-                  <h4>$ 5,396</h4>
-                </FlexItem>
-                <FlexItem margin="16px" justify="between">
-                  <h4>VAT (INCLUDED)</h4>
-                  <h4>$ 5,396</h4>
-                </FlexItem>
-                <FlexItem margin="16px" justify="between">
-                  <h4>GRAND TOTAL</h4>
-                  <h4>$ 5,396</h4>
-                </FlexItem>
+                </Formik>
               </div>
+            </Card>
+            <Card className="cc-4 shipping-info">
+              <div style={{ height: "100%" }}>
+                <h2>Summary</h2>
 
-              <div className="checkout-action">
-                <Button buttonType={"primary"}>CONTINUE & PAY</Button>
+                {[...Array(3)].map((_, index) => (
+                  <List key={index}>
+                    <span>x1</span>
+                  </List>
+                ))}
+
+                <div className="product-details">
+                  <FlexItem margin="8px" justify="between">
+                    <h4 className="labels">TOTAL</h4>
+                    <h4>$ 5,396</h4>
+                  </FlexItem>
+                  <FlexItem margin="8px" justify="between">
+                    <h4 className="labels">SHIPPING</h4>
+                    <h4>$ 5,396</h4>
+                  </FlexItem>
+                  <FlexItem margin="20px" justify="between">
+                    <h4 className="labels">VAT (INCLUDED)</h4>
+                    <h4>$ 5,396</h4>
+                  </FlexItem>
+                  <FlexItem margin="16px" justify="between">
+                    <h4 className="labels">GRAND TOTAL</h4>
+                    <h4 className="total">$ 5,396</h4>
+                  </FlexItem>
+                </div>
+
+                <div className="checkout-action">
+                  <Button buttonType={"primary"}>CONTINUE & PAY</Button>
+                </div>
               </div>
-            </div>
-          </Card>
-        </GridBox>
+            </Card>
+          </GridBox>
+        </div>
       </Container>
     </>
   );

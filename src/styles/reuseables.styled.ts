@@ -283,13 +283,55 @@ export const Container = styled.div`
 
 export const Card = styled.div`
   max-width: 100%;
-  padding: 10px;
+  padding: 20px;
   background-color: #fff;
   width: 100%;
   border-radius: 8px;
- 
+  p {
+      color: #d87d4a;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 25px;
+      letter-spacing: 0.9285714030265808px;
+      text-align: left;
+      text-transform: uppercase;
+      margin-top: 30px;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      font-size: 32px;
+      line-height: 28px;
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      text-transform: uppercase;
+    }
+
   @media (${device.tablet}) {
     padding: 15px;
+    p {
+      color: #d87d4a;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 25px;
+      letter-spacing: 0.9285714030265808px;
+      text-align: left;
+      text-transform: uppercase;
+      margin-top: 30px;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      font-size: 32px;
+      line-height: 36px;
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      text-transform: uppercase;
+    }
   }
 
   @media (${device.laptop}) {
@@ -313,7 +355,9 @@ export const Card = styled.div`
       margin-bottom: 12px;
     }
 
-    
+    h2 {
+      text-transform: uppercase;
+    }
   }
 `;
 
@@ -441,8 +485,8 @@ export const Features = styled.div`
 export const GridBox = styled.div`
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-  gap: 20px 0px;
-  margin-top: 105px;
+  gap: 25px 0px;
+  margin-top: 57px;
   @media (${device.tablet}) {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
@@ -454,11 +498,17 @@ export const GridBox = styled.div`
     }
     .cc-4 {
       grid-column: span 12;
+      height: 612px;
+      overflow-y: auto;
+
+      .product-details {
+        margin-top: 25px;
+      }
     }
   }
   @media (${device.laptop}) {
     margin-top: 105px;
-
+    gap: 0 24px;
     .cc-8 {
       grid-column: span 8;
     }
@@ -467,19 +517,18 @@ export const GridBox = styled.div`
       height: 612px;
       overflow-y: auto;
 
-      .product-details{
-       margin-top: 25px;
+      .product-details {
+        margin-top: 25px;
       }
     }
   }
 `;
 
-
 export const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   gap: 20px 0px;
-  margin-top: 105px;
+  margin-top: 0px;
   @media (${device.tablet}) {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -487,10 +536,9 @@ export const Grid = styled.div`
     margin-top: 15px;
   }
   @media (${device.laptop}) {
-   
+    gap: 0 20px;
   }
 `;
-
 
 export const FlexItem = styled.div<{ justify?: string; margin?: string }>`
   display: flex;
@@ -499,9 +547,19 @@ export const FlexItem = styled.div<{ justify?: string; margin?: string }>`
   margin-bottom: ${(props) => props.margin};
   justify-content: space-${(props) => props.justify};
 
-
-  h4{
+  h4 {
     font-size: 15px;
     font-weight: 700;
+  }
+
+  .labels {
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 25px;
+    opacity: 0.4;
+  }
+
+  .total {
+    color: #d87d4a;
   }
 `;
