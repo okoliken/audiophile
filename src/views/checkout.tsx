@@ -8,11 +8,13 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Formik, Field, Form } from "formik";
 import { Button } from "../components/button/Button";
-
+import Shape from "../assets/Shape.svg";
+// import { OrderConfirmationModal } from "../components/OrderConfirmationModal";
 import { Options, FormState } from "../utils/types";
 import { List } from "../components/product/list";
 import { FlexItem, GridBox } from "../styles/reuseables.styled";
 import { PaymentOptionCard } from "../styles/styles.styled";
+import { usePaystackPayment } from "react-paystack";
 
 import { FormSchema } from "../utils/schema";
 
@@ -36,6 +38,42 @@ export const CheckOut = () => {
   });
   const selectPaymentOption = (val: Options) => {
     setPaymentOption(val);
+  };
+
+  const config = {
+    reference: new Date().getTime().toString(),
+    email: "user@example.com",
+    amount: 20000,
+    publicKey: "pk_test_bf4135affc23192f0391784480641541acd9d9b1",
+    
+  };
+
+  // you can call this function anything
+  const onSuccess = (reference: any) => {
+    console.log(reference);
+  };
+
+  const onClose = () => {
+    console.log("closed");
+  };
+
+  const InitiatePayment = () => {
+    const initializePayment = usePaystackPayment(config);
+    return (
+      <Button
+        onClick={() => {
+          if (paymentOption.value === "online-payment") {
+            initializePayment({ onSuccess, onClose });
+          } else {
+            // show modal
+          }
+        }}
+        
+        buttonType={"primary"}
+      >
+        CONTINUE & PAY
+      </Button>
+    );
   };
 
   const paymentOptions = [
@@ -163,7 +201,7 @@ export const CheckOut = () => {
                           <label>ZIP Code</label>
                           <Field
                             placeholder="10001"
-                            type="email"
+                            type="text"
                             name="field5"
                           />
                           {errors.field5 && touched.field5 ? (
@@ -179,7 +217,7 @@ export const CheckOut = () => {
                           <Field
                             placeholder="New York"
                             name="field6"
-                            type="email"
+                            type="text"
                           />
                           {errors.field6 && touched.field6 ? (
                             <span>{errors.field6}</span>
@@ -197,7 +235,7 @@ export const CheckOut = () => {
                           <Field
                             placeholder="United States"
                             name="field7"
-                            type="email"
+                            type="text"
                           />
                           {errors.field7 && touched.field7 ? (
                             <span>{errors.field7}</span>
@@ -248,8 +286,8 @@ export const CheckOut = () => {
                             <label>e-Money Number</label>
                             <Field
                               placeholder="238521993"
-                              name="email"
-                              type="email"
+                              name="field8"
+                              type="text"
                             />
 
                             {errors.field8 && touched.field8 ? (
@@ -262,7 +300,11 @@ export const CheckOut = () => {
                             } form-group`}
                           >
                             <label>e-Money PIN</label>
-                            <Field placeholder="6891" name="pin" type="text" />
+                            <Field
+                              placeholder="6891"
+                              name="field9"
+                              type="text"
+                            />
                             {errors.field9 && touched.field9 ? (
                               <span>{errors.field9}</span>
                             ) : null}
@@ -270,6 +312,23 @@ export const CheckOut = () => {
                         </Grid>
                       )}
                     </div>
+
+                    {paymentOption.value === "cash" && (
+                      <div className="cod">
+                        <div>
+                          <img src={Shape} alt="square" />
+                        </div>
+
+                        <div>
+                          <span>
+                            The ‘Cash on Delivery’ option enables you to pay in
+                            cash when our delivery courier arrives at your
+                            residence. Just make sure your address is correct so
+                            that your order will not be cancelled.
+                          </span>
+                        </div>
+                      </div>
+                    )}
                   </Card>
                   <Card className="cc-4 shipping-info">
                     <div style={{ height: "100%" }}>
@@ -301,7 +360,7 @@ export const CheckOut = () => {
                       </div>
 
                       <div className="checkout-action">
-                        <Button buttonType={"primary"}>CONTINUE & PAY</Button>
+                        <InitiatePayment />
                       </div>
                     </div>
                   </Card>
@@ -309,6 +368,8 @@ export const CheckOut = () => {
               </Form>
             )}
           </Formik>
+
+          {/* <OrderConfirmationModal />  */}
         </div>
       </Container>
     </>

@@ -12,7 +12,7 @@ export const Button = ({
   return (
     <BaseButton
       $buttonType={buttonType}
-      type="submit"
+      type="button"
       $variant={variant}
       disabled={loading}
       onClick={onClick}

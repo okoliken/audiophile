@@ -57,6 +57,30 @@ body {
   right: 0;
 }
 
+.cod{
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  flex-direction: column;
+}
+
+@media (min-width: 1024px) {
+  .cod{
+    display: flex;
+    align-items: center;
+    gap: 0 20px;
+    margin-top: 20px;
+    flex-direction: row;
+  }
+
+  .cod span{
+    font-size: 14px;
+    line-height: 25px;
+    opacity: 0.4;
+    font-weight: 500;
+  }
+  
+}
 
 label {
   margin-bottom: 10px;

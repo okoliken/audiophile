@@ -1,7 +1,7 @@
 import * as Yup from "yup";
 
 export const FormSchema = Yup.object().shape({
-  field1: Yup.string().min(2, "Too Short!").max(50, "Too Long!").required(),
+  field1: Yup.string().min(2, "Too Short!").max(50, "Too Long!").required('Name is required'),
   field2: Yup.string().email("Invalid email").required("Required"),
   field3: Yup.string()
     .matches(
@@ -32,10 +32,12 @@ export const FormSchema = Yup.object().shape({
   field8: Yup.string()
   .matches(/^\d+$/, "Only digits allowed")
     .min(2, "Too Short!")
-    .max(50, "Too Long!"),
+    .max(50, "Too Long!")
+    .notRequired()
+    .nullable(),
   field9: Yup.string()
    .matches(/^\d+$/, "Only digits allowed")
-    .min(2, "Too Short!")
-    .max(50, "Too Long!")
-    
+   .length(4, 'E-money Pin must be 4 digits')
+    .notRequired()
+    .nullable()
 });

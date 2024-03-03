@@ -863,6 +863,27 @@ export const EarPodsCTA = styled.div`
   }
 `;
 
+export const Overlay = styled.div`
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5));
+  width: 100%;
+  min-height: 100vh;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-y: scroll;
+  @media (${device.laptop}) {
+    align-items: center;
+    justify-content: center;
+  }
+`;
+
 export const CartOverlay = styled.div`
   background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5));
   width: 100%;
@@ -889,6 +910,21 @@ export const CartOverlay = styled.div`
     }
   }
 `;
+
+
+export const OrderConfirmation = styled.div`
+  width: 100%;
+  max-width: 540px;
+  min-height: 713px;
+  overflow-y: scroll;
+  border-radius: 8px;
+  background-color: #fff;
+  position: relative !important;
+
+  padding: 24px;
+  z-index: 9999;
+  flex-shrink: 0;
+`
 
 export const CartItem = styled.div`
   width: 100%;
