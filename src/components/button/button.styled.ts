@@ -7,6 +7,8 @@ export const BaseButton = styled.button<{
   $buttonType: string;
   $variant: string;
   $size: string;
+  disabled: boolean;
+  type?: string;
 }>`
   font-size: 0.8125em;
   color: #fff;
@@ -21,29 +23,22 @@ export const BaseButton = styled.button<{
   appearance: none;
   outline: none;
   cursor: pointer;
-
-  background-image: -webkit-linear-gradient(
-    30deg,
-    ${(props) => (props.$buttonType === "primary" ? "#d87d4a" : "#000")} 50%,
-    #fff 50%
-  );
-  background-image: linear-gradient(
-    30deg,
-    ${(props) => (props.$buttonType === "primary" ? "#d87d4a" : "#000")} 50%,
-    #fff 50%
-  );
-  background-size: 800px;
-  background-repeat: no-repeat;
-  background-position: 0%;
-  -webkit-transition: background 300ms ease-in-out;
-  transition: background 300ms ease-in-out;
+  background-color: ${(props) =>
+    props.$buttonType === "primary" ? "#d87d4a" : "#000"};
+  transition: all 300ms ease-in-out;
 
   &:hover {
     background-position: 100%;
-
-    color: ${(props) => (props.$buttonType === "primary" ? "#d87d4a" : "#000")};
+    color: ${(props) => (props.$buttonType === "primary" ? "#fff" : "#fff")};
     border: 3px solid
-      ${(props) => (props.$buttonType === "primary" ? "#d87d4a" : "#000")};
+      ${(props) => (props.$buttonType === "primary" ? "#FBAF85" : "#000")};
+    background-color: ${(props) =>
+      props.$buttonType === "primary" ? "#FBAF85" : ""};
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
   }
 
   ${(props) =>
@@ -59,4 +54,3 @@ export const BaseButton = styled.button<{
       }
     `};
 `;
-// ${props => props.$primary ? "#BF4F74" : "white"};

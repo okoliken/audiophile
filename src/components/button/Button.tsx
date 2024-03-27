@@ -2,23 +2,25 @@ import { BaseButton } from "./button.styled";
 import type { ButtonProps } from "./types";
 
 export const Button = ({
-  loading,
+  loading = false,
   children,
   buttonType,
   variant = "default",
   onClick,
   size = "default",
+  disabled = false,
+  type = "button"
 }: ButtonProps) => {
   return (
     <BaseButton
       $buttonType={buttonType}
-      type="button"
+      type={type}
       $variant={variant}
-      disabled={loading}
+      disabled={disabled || loading}
       onClick={onClick}
       $size={size}
     >
-      {loading ? "Loading..." : children}
+      {loading ? "Loading..." : children} 
     </BaseButton>
   );
 };

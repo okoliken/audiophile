@@ -14,7 +14,6 @@ import bitMapMobile from "../assets/bitmap-mobile.png";
 import bitMapTablet from "../assets/bitmap-tab.png";
 import bitMapLaptop from "../assets/bitmap-desk.png";
 import Earpods from "../assets/earpods.png";
-import { LazyLoadImage } from "react-lazy-load-image-component";
 import { NavLink } from "react-router-dom";
 
 export const Home = () => {
@@ -55,7 +54,9 @@ export const Home = () => {
               Upgrade to premium speakers that are phenomenally built to deliver
               truly remarkable sound.
             </p>
-            <Button buttonType="dark">See Product</Button>
+            <NavLink to="/product/SPEAKERS/zx9-speaker">
+              <Button buttonType="dark">See Product</Button>
+            </NavLink>
           </div>
         </SpeakerAdvert>
       </Container>
@@ -66,29 +67,28 @@ export const Home = () => {
             <div>
               <div className="call-action">
                 <h3>ZX7 SPEAKER</h3>
-                <Button variant="outline" buttonType="dark">
-                  See Product
-                </Button>
+                  <NavLink to={`/product/SPEAKERS/zx9-speaker`}>
+                    <Button variant="outline" buttonType="dark">
+                      See Product
+                    </Button>
+                  </NavLink>
               </div>
 
-              <LazyLoadImage
-                effect="opacity"
+              <img
                 className="bit-mobile"
                 src={bitMapMobile}
                 alt="bitMapMobile"
               />
             </div>
             <div>
-              <LazyLoadImage
-                effect="opacity"
+              <img
                 className="bit-tablet"
                 src={bitMapTablet}
                 alt="bitMapTablet"
               />
             </div>
             <div>
-              <LazyLoadImage
-                effect="opacity"
+              <img
                 className="bit-desktop"
                 src={bitMapLaptop}
                 alt="bitMapLaptop"
@@ -102,10 +102,12 @@ export const Home = () => {
 
           <div className="cta-container">
             <div className="cta-action">
-              <h3>ZX7 SPEAKER</h3>
+              <h3>YX1 EARPHONES</h3>
+              <NavLink to={`/product/EARPHONES/yx1-wireless-EARPHONES`}>
               <Button variant="outline" buttonType="dark">
                 See Product
               </Button>
+              </NavLink>
             </div>
           </div>
         </EarPodsCTA>

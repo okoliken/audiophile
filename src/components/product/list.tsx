@@ -1,15 +1,20 @@
 import styled from "styled-components";
-import { LazyLoadImage } from "react-lazy-load-image-component";
-import { FlexItem } from '../../styles/reuseables.styled'
+import { FlexItem } from "../../styles/reuseables.styled";
+import { useShortner } from "../../hooks/shorten-words";
+
+
 type ListProps = {
   children: React.ReactNode;
+  product_image: string;
+  price: number;
+  product_name: string;
 };
 
 const ListItem = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-
+  width: 100%;
   margin: 20px 0;
   h5 {
     font-size: 15px;
@@ -32,6 +37,7 @@ const ListItem = styled.div`
     img {
       width: 36.19px;
       height: 40px;
+      object-fit: contain;
       border-radius: 8px;
     }
 
@@ -42,22 +48,30 @@ const ListItem = styled.div`
   }
 `;
 
+export const List = ({
+  children,
+  product_image,
+  product_name,
+  price,
+}: ListProps) => {
 
-export const List = ({ children }: ListProps) => {
+  const { shortenProductName } = useShortner()
+
+  function formatNumberWithCommas(number: number) {
+    return <>{number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</>;
+  }
+  
   return (
     <>
       <ListItem>
         <FlexItem>
           <div className="img-bg">
-            <LazyLoadImage
-              effect="blur"
-              src="http://via.placeholder.com/640x360"
-              alt="product image"
-            />
+            <img loading="lazy" src={product_image}
+              alt={shortenProductName(product_name)} />
           </div>
           <div>
-            <h5>XX99 MK II</h5>
-            <span>$ 2,999</span>
+            <h5>{shortenProductName(product_name)}</h5>
+            <span>$ {formatNumberWithCommas(price)}</span>
           </div>
         </FlexItem>
 

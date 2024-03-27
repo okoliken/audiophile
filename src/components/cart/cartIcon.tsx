@@ -4,7 +4,8 @@ type CartProps = {
 
 export const CartIcon = ({ openCartMenu }: CartProps) => {
   return (
-    <svg
+    <>
+      <svg
       onClick={openCartMenu}
       id="cartIcon"
       xmlns="http://www.w3.org/2000/svg"
@@ -20,5 +21,8 @@ export const CartIcon = ({ openCartMenu }: CartProps) => {
         fill="white"
       />
     </svg>
+
+    
+    </>
   );
 };

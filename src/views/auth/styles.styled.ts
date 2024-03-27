@@ -16,6 +16,14 @@ export const LoginBox = styled.div`
   background: #fff;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
+
+
+  strong {
+    color: #CD2C2C;
+    transition: all .2s;
+    font-size: 12px;
+    margin-bottom: 4px;
+  }
 `;
 
 export const Title = styled.h2`
@@ -26,8 +34,8 @@ export const Title = styled.h2`
 
 export const Input = styled.input`
   width: 100%;
-  padding: 13px;
-  margin-bottom: 10px;
+  padding: 12px;
+  margin-bottom: 12px;
   border: 1px solid #ddd;
   border-radius: 4px;
 `;
@@ -39,8 +47,10 @@ export const Button = styled.button`
   border-radius: 4px;
   background-color: #333;
   color: white;
-  margin-bottom: 10px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   &:hover {
     background-color: #555;

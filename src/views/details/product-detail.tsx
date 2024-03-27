@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { useAlert } from "../../hooks/useAlert";
 import parse from "html-react-parser";
+import { useLocalStorageCart } from "../../hooks/useLocalStorageCart";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import {
   ProductDisplay,
@@ -17,33 +17,25 @@ import { ProductPrototype } from "../../utils/types";
 import { getSingleProduct } from "../../services";
 
 export const ProductDetails = () => {
-  const [quantity, updateQuantity] = useState(1);
-
   const [singleProduct, setSingleProduct] = useState<ProductPrototype | null>(
     null
   );
   const [loading, setLoading] = useState(false);
-
   const { slug, name } = useParams();
-  const { showAlert } = useAlert();
+
+  const {
+    increaseQuantity,
+    decreaseQuantity,
+    addToCart,
+    getTotalQuantityForProduct,
+  } = useLocalStorageCart();
   const navigate = useNavigate();
-
-  const increaseQuantity = () => {
-    updateQuantity((prev) => prev + 1);
-  };
-
-  const decreaseQuantity = () => {
-    if (quantity > 0) {
-      updateQuantity((prev) => prev - 1);
-    } else return;
-  };
 
   const convertToObject = (productDetail: ProductPrototype[]) => {
     const product = productDetail?.map((product: ProductPrototype) => {
       return product;
     });
-  //  @ts-expect-error error expected
-
+    //  @ts-expect-error error expected
     setSingleProduct(...product);
   };
 
@@ -51,20 +43,27 @@ export const ProductDetails = () => {
     navigate(-1);
   }
 
-  const products_features = singleProduct?.features
-    ? JSON.parse(singleProduct?.features)
-    : [];
+  function formatNumberWithCommas(number: number) {
+    return <>{number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</>;
+  }
 
-  const similarProducts = singleProduct?.similar_products
-    ?.map((product: { [x: string]: unknown }) => {
-      try {
-        return JSON.parse(String(product));
-      } catch (e) {
-        console.error("Failed to parse product JSON", e);
-        return null;
-      }
-    })
-    .filter(Boolean); // This will remove any null values resulting from parse failures
+  const products_features = useMemo(() => {
+    return singleProduct?.features ? JSON.parse(singleProduct?.features) : [];
+  }, [singleProduct]);
+
+  const quantity =  getTotalQuantityForProduct(singleProduct?.slug || "");
+
+  const similarProducts = useMemo(() => {
+    return singleProduct?.similar_products
+      ?.map((product: { [x: string]: unknown }) => {
+        try {
+          return JSON.parse(String(product));
+        } catch (e) {
+          return null;
+        }
+      })
+      .filter(Boolean);
+  }, [singleProduct]);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -97,9 +96,11 @@ export const ProductDetails = () => {
       <HeroSection style={{ height: "110px" }}></HeroSection>
 
       <Container>
+        <div className="padded">
         <p onClick={handleBack} className="go-back">
           Go Back
         </p>
+        </div>
         <ProductDisplay>
           <div className="product__img">
             <LazyLoadImage
@@ -115,17 +116,30 @@ export const ProductDetails = () => {
             <h2>{singleProduct?.product_name}</h2>
 
             <p>{singleProduct?.description}</p>
-            <h4>${singleProduct?.price}</h4>
+            <h4>${formatNumberWithCommas(Number(singleProduct?.price))}</h4>
 
             <div
               style={{ display: "flex", alignItems: "center", gap: "0px 15px" }}
             >
-              <CartItemIncrementer
-                quantity={quantity}
-                increaseQuantity={increaseQuantity}
-                decreaseQuantity={decreaseQuantity}
-              />
-              <Button onClick={showAlert} buttonType={"primary"}>
+              {quantity > 0 && (
+                <CartItemIncrementer
+                  quantity={quantity}
+                  increaseQuantity={() =>
+                    increaseQuantity(singleProduct?.slug || "")
+                  }
+                  decreaseQuantity={() => {
+                    decreaseQuantity(singleProduct?.slug || "");
+                  }}
+                />
+              )}
+
+              <Button
+                disabled={quantity > 0}
+                onClick={() => {
+                  quantity <= 0 && addToCart(singleProduct);
+                }}
+                buttonType={"primary"}
+              >
                 ADD TO CART
               </Button>
             </div>

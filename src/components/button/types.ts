@@ -6,6 +6,8 @@ export interface ButtonProps {
   buttonType: ButtonType;
   variant?:Variant;
   size?:string;
-  onClick?: () => void
+  onClick?: (arg: any) => void
+  disabled?: boolean
+  type?: string
   // Add other props as needed
 }

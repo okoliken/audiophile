@@ -5,7 +5,7 @@ import { HeadPhones } from "./views/head-phones";
 import { Speakers } from "./views/speakers";
 import { Layout } from "./layouts/Layout";
 // import  {AuthLayout} from './layouts/AuthLayout'
-
+import { AuthGuard } from "./components/AuthGaurd";
 import { RouteLoadingBar } from "./components/RouteLoadingBar";
 import { Earphones } from "./views/earphones";
 import { ProductDetails } from "./views/details/product-detail";
@@ -17,8 +17,7 @@ import { useProducts } from "./hooks/useFetch";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { CheckOut } from "./views/checkout";
-
-
+import { Toaster } from "react-hot-toast";
 
 export default function App() {
   const { headsets, speakers, earphone, loading, error } = useProducts();
@@ -98,14 +97,17 @@ export default function App() {
           <Route
             path="/product/check-out"
             element={
-              <Layout>
-                <CheckOut />
-              </Layout>
+              <AuthGuard>
+                <Layout>
+                  <CheckOut />
+                </Layout>
+              </AuthGuard>
             }
           />
         </Routes>
       </Router>
       <ReactQueryDevtools initialIsOpen={false} />
+      <Toaster />
     </QueryClientProvider>
   );
 }

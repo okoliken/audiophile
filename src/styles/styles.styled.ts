@@ -637,6 +637,10 @@ export const XZ7PRODUCT = styled.div`
     .call-action {
       transform: translateX(30px) translateY(130px);
 
+      a{
+        color: inherit;
+      }
+
       h3 {
         color: #000;
         font-family: Manrope;
@@ -684,6 +688,9 @@ export const XZ7PRODUCT = styled.div`
   @media (${device.tablet}) {
     .call-action {
       transform: translateX(100px) translateY(200px);
+      a{
+        color: inherit;
+      }
       h3 {
         color: #000;
         font-family: Manrope;
@@ -706,7 +713,7 @@ export const XZ7PRODUCT = styled.div`
     }
   }
   @media (${device.laptop}) {
-    margin-bottom: 33px;
+    margin: 33px 0px;
     padding: 0;
     .call-action {
       transform: translateX(100px) translateY(180px);
@@ -915,15 +922,132 @@ export const CartOverlay = styled.div`
 export const OrderConfirmation = styled.div`
   width: 100%;
   max-width: 540px;
-  min-height: 713px;
+  max-height: 513px;
   overflow-y: scroll;
   border-radius: 8px;
   background-color: #fff;
   position: relative !important;
 
-  padding: 24px;
+  padding: 30px;
   z-index: 9999;
   flex-shrink: 0;
+
+  .circular-tick{
+    width:64px;
+    height:64px;
+    border-radius: 50%;
+    margin-bottom: 25px;
+    background-color: #D87D4A;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .actions{
+    button{
+     width: 100%;
+    }
+  }
+
+  h2{
+    font-size: 24px;
+    line-height: 28px;
+    letter-spacing: 0.86px;
+    margin: 10px 0;
+  }
+
+  p{
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 25px;
+    margin-top: 12px;
+    opacity: 0.4;
+  }
+
+  .products-purchased{
+    background-color: #F1F1F1;
+    padding: 29px 25px;
+    border-radius: 8px  8px 0px 0px;
+    height: 100%;
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    flex-direction: column;
+    gap: 20px 0px;
+    img{
+      width: 28px;
+      height: 32px;
+      object-fit: contain;
+    }
+
+    h4{
+      font-size: 15px;
+      line-height: 25px;
+      font-weight: 700;
+    }
+
+    h5{
+      font-size: 15px;
+      opacity: 0.4;
+      font-weight: 700;
+    }
+
+    p{
+      margin: 0;
+      font-weight: 700;
+    }
+
+    .border-b{
+      width: 198px;
+      height: 1px;
+      text-align: center;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      opacity: border 0.08;
+      
+      p{
+        font-size: 12px;
+        cursor: pointer;
+        padding: 10px 0;
+      }
+    }
+  }
+
+  .total-cost{
+    border-radius: 0px  0px 8px 8px;
+    background-color: #000000;
+    padding: 20px;
+    display: flex;
+    height: 100%;
+    /* align-items: start; */
+    justify-content: end;
+    flex-direction: column;
+    h3{
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 25px;
+    color: #FFFFFF;
+    opacity: 0.5;
+    margin: 10px 0;
+    }
+
+    h4{
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 24.59px;
+      color: #fff;
+    }
+  }
+
+  @media (${device.laptop}) {
+    .products-purchased{
+      border-radius: 10px 0px 0px 10px;
+
+    }
+
+    .total-cost{
+      border-radius: 0px 10px 10px 0px;
+      padding: 40px 30px;
+    }
+  }
 `
 
 export const CartItem = styled.div`
@@ -935,21 +1059,38 @@ export const CartItem = styled.div`
   background-color: #fff;
   position: relative !important;
 
-  padding: 24px;
   z-index: 9999;
   flex-shrink: 0;
   .cart__actions {
-    position: sticky; // Use sticky positioning
-    bottom: 0;
-    background-size: #fff;
-    height: 100%;
+    position: sticky;
+    bottom: 0%;
+    background-color: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     width: 100%;
+    padding: 22px;
+    .total__price{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 2px 0 14px 0;
+      width: 100%;
 
+      .label{
+        color: #000;
+        opacity: 0.4;
+        font-size: 15px;
+      }
+      .price{
+        color: #000;
+        font-size: 18px;
+        font-weight: 700;
+      }
+    }
     button {
-      flex-grow: 1;
+      width: 100%;
     }
   }
 
@@ -959,7 +1100,7 @@ export const CartItem = styled.div`
     justify-content: center;
     flex-direction: column;
     /* margin: 10px 0; */
-    height: 100%;
+    height: 72%;
     p {
       color: #000;
       font-family: Manrope;
@@ -971,11 +1112,21 @@ export const CartItem = styled.div`
       opacity: 0.5;
     }
   }
+  .cart__body{
+    padding:0 24px;
+    height: 60%;
+    overflow-y: scroll;
+  }
   .cart__header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-
+    padding: 24px;
+    position: sticky;
+    top: 0%;
+    width: 100%;
+    background-color: #fff;
+    z-index: 99999;
     h3 {
       color: #000;
       font-family: Manrope;
@@ -991,11 +1142,12 @@ export const CartItem = styled.div`
       color: #000;
       font-family: Manrope;
       font-size: 15px;
+      cursor: pointer;
       font-style: normal;
       font-weight: 500;
       line-height: 25px; /* 166.667% */
       text-decoration-line: underline;
-      opacity: 0.5;
+      opacity: 0.4;
     }
   }
 `;
@@ -1004,22 +1156,23 @@ export const IncrementButton = styled.div`
   width: 120px;
   height: 48px;
   background: #f1f1f1;
-  padding: 12px;
+  padding: 3px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
 
   p {
     font-size: 13px;
+    margin: 0%;
   }
 
   .increase,
   .decrease {
     color: #000;
-
+    opacity: 0.4;
     text-align: center;
-    font-family: Manrope;
     font-size: 13px;
+    margin: 0%;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
@@ -1029,9 +1182,8 @@ export const IncrementButton = styled.div`
 
   p.quantity {
     color: #000;
-
+    margin: 0%;
     text-align: center;
-    font-family: Manrope;
     font-size: 13px;
     font-style: normal;
     font-weight: 700;
@@ -1043,13 +1195,14 @@ export const IncrementButton = styled.div`
   @media (${device.tablet}) {
     p {
       transform: translateY(0px);
+      margin: 0%;
     }
   }
   @media (${device.laptop}) {
     p {
-      transform: translateY(7px);
       cursor: pointer;
-      font-size: 18px !important;
+      margin: 0%;
+      font-size: 14px !important;
       color: #000 !important;
     }
   }

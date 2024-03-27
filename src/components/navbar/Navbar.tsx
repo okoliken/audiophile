@@ -2,15 +2,18 @@ import { FlexContainer } from "./navbar.styled";
 import styled from "styled-components";
 import { Logo } from "../logo";
 import { Menu } from "../menu";
-import { CartIcon } from "../cart/cartIcon";
+
+import { CartIconWithBadge } from "../cart/cartIconwithBadge";
 import { routes } from "../index";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { Container } from "../../styles/styles.styled";
 import { device } from "../devices";
 import { Cart } from "../cart/cart";
 import { BottomDrawer } from "./BottomDrawer";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useToggler } from "../../hooks/useToggle";
+import { useLocalStorageCart } from "../../hooks/useLocalStorageCart";
+
 
 const NavBar = styled.div`
   background-color: transparent;
@@ -25,7 +28,7 @@ const NavBar = styled.div`
 export const Navbar = () => {
   const [cartMenu, openCart] = useState(false);
   const { isToggled, toggleMobileDrawer } = useToggler();
-
+  const navigate = useNavigate()
   const openCartMenu = () => {
     openCart(true);
   };
@@ -34,13 +37,21 @@ export const Navbar = () => {
     openCart(false);
   };
 
+  const { cart } = useLocalStorageCart()
+
+
+  const getTotalItems = useMemo(() => {
+    return cart.reduce((total, currentItem) => total + currentItem.quantity, 0);
+  }, [cart]);
+
+
   return (
     <div style={{ position: "relative" }}>
       <NavBar>
         <Container>
           <FlexContainer>
             <Menu toggleBottomDrawer={toggleMobileDrawer} />
-            <div className="header__menu">
+            <div onClick={()=> navigate('/')} className="header__menu">
               <Logo />
             </div>
             <ul className="Header__Desktop">
@@ -55,14 +66,14 @@ export const Navbar = () => {
                 </li>
               ))}
             </ul>
-            <CartIcon openCartMenu={openCartMenu} />
+            <CartIconWithBadge itemCount={getTotalItems} openCartMenu={openCartMenu} />
           </FlexContainer>
         </Container>
       </NavBar>
       <BottomDrawer isOpen={isToggled} onClose={toggleMobileDrawer}>
         <ul className="bottom__nav_drawer">
           {routes.map((link, index) => (
-            <li key={index}>
+            <li onClick={toggleMobileDrawer} key={index}>
               <NavLink
                 className={({ isActive }) => (isActive ? "active" : "")}
                 to={link.link}

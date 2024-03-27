@@ -37,6 +37,7 @@ export const HeroSection = styled.div`
   }
 `;
 
+
 export const ProductDisplay = styled.div`
   display: grid;
   grid-template-columns: repeat(1, 1fr);
@@ -94,7 +95,7 @@ export const ProductDisplay = styled.div`
     }
   }
   @media (${device.mobileS}) {
-    margin: 85px 25px;
+    margin: 25px 25px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -169,10 +170,35 @@ export const ProductDisplay = styled.div`
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 0 50px;
+
+    .product__content {
+      display: flex;
+      align-items: start;
+      justify-content: start;
+      flex-direction: column;
+      span {
+        color: #d87d4a;
+        margin: 25px 0px;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        display: inline-block;
+        letter-spacing: 10px;
+        text-align: left !important;
+        text-transform: uppercase;
+      }
+      h2 {
+        text-align: left;
+      }
+      p {
+        text-align: left;
+      }
+    }
   }
   @media (${device.laptop}) {
     min-height: 100vh;
-    margin: 85px 0px;
+    margin: 15px 0px;
     height: 100%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -182,7 +208,6 @@ export const ProductDisplay = styled.div`
     flex-grow: 1;
     h4 {
       color: #000;
-
       font-size: 18px;
       margin: 35px 0px;
       font-weight: 700;
@@ -251,7 +276,7 @@ export const ProductDisplay = styled.div`
       }
       p {
         color: #000;
-        margin: 20px 0px 35px;
+        /* margin: 20px 0px 35px; */
         font-size: 15px;
         font-style: normal;
         text-align: left;
@@ -281,9 +306,10 @@ export const Container = styled.div`
   }
 `;
 
+
 export const Card = styled.div`
   max-width: 100%;
-  padding: 20px;
+  padding: 30px;
   background-color: #fff;
   width: 100%;
   border-radius: 8px;
@@ -486,7 +512,7 @@ export const GridBox = styled.div`
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   gap: 25px 0px;
-  margin-top: 57px;
+  margin-top: 30px;
   @media (${device.tablet}) {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
@@ -507,7 +533,7 @@ export const GridBox = styled.div`
     }
   }
   @media (${device.laptop}) {
-    margin-top: 105px;
+    margin-top: 40px;
     gap: 0 24px;
     .cc-8 {
       grid-column: span 8;
@@ -524,29 +550,30 @@ export const GridBox = styled.div`
   }
 `;
 
-export const Grid = styled.div`
+export const Grid = styled.div<{noGap?:boolean}>`
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-  gap: 20px 0px;
+  gap: ${($props) => $props.noGap ? '0px 0px' : '20px 0px'};
   margin-top: 0px;
+  height: 100%;
   @media (${device.tablet}) {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 0 20px;
+    gap:${($props) => $props.noGap ? '0px 0px' : '0px 20px'};
     margin-top: 15px;
   }
   @media (${device.laptop}) {
-    gap: 0 20px;
+    gap:${($props) => $props.noGap ? '0px 0px' : '0px 20px'};
   }
 `;
 
-export const FlexItem = styled.div<{ justify?: string; margin?: string }>`
+export const FlexItem = styled.div<{ justify?: string; align?:string, margin?: string, gap?:string }>`
   display: flex;
-  align-items: center;
-  gap: 0 12px;
+  align-items:${(props) => props.align ? props.align : 'center'};
+  gap: ${({gap}) => gap ? gap : '0 12px'};
   margin-bottom: ${(props) => props.margin};
   justify-content: space-${(props) => props.justify};
-
+  width: 100%;
   h4 {
     font-size: 15px;
     font-weight: 700;

@@ -16,12 +16,7 @@ export interface ProductDetails {
   similar_products: similar_products[];
 }
 
-export interface ProductPrototype {
-  sub_title: string | null;
-  product_name: string;
-  description: string;
-  image: string;
-  slug: string;
+export interface ProductPrototype extends Product {
   details: ProductDetails;
   price:number;
   features:string;
@@ -29,6 +24,8 @@ export interface ProductPrototype {
   images:string[];
   similar_products:{ x: string; y: string }[]
 }
+
+
 export interface Product {
   sub_title: string | null;
   product_name: string;

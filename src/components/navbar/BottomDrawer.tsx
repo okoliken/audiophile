@@ -10,7 +10,7 @@ import {
 type DrawerProps = {
   isOpen: boolean;
   onClose: () => void;
-  children: React.ReactNode;
+  children: React.JSX.Element;
 };
 
 export const BottomDrawer = ({ isOpen, onClose, children }: DrawerProps) => {

@@ -36,6 +36,7 @@ export const FlexContainer = styled.header`
 
       svg {
         margin-left: 38px;
+        
       }
     }
   }
@@ -54,6 +55,7 @@ export const FlexContainer = styled.header`
       width: inherit;
       svg {
         margin-left: 0;
+        cursor: pointer;
       }
     }
 
