@@ -41,13 +41,13 @@ export interface Options {
 }
 
 export interface FormState {
-  field1: string;
-  field2: string;
-  field3: string;
-  field4: string;
-  field5: string;
-  field6: string;
-  field7: string;
-  field8: string;
-  field9: string;
+  name: string;
+  email: string;
+  phone: string;
+  address: string;
+  zipCode: string;
+  country: string;
+  eNumber: string;
+  ePin: string;
+  city: string;
 }

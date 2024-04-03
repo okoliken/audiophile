@@ -20,15 +20,15 @@ import toast from "react-hot-toast";
 import { FormSchema } from "../utils/schema";
 
 const initialState: FormState = {
-  field1: "",
-  field2: "",
-  field3: "",
-  field4: "",
-  field5: "",
-  field6: "",
-  field7: "",
-  field8: "",
-  field9: "",
+  name: "",
+  email: "",
+  phone: "",
+  address: "",
+  zipCode: "",
+  city: "",
+  country: "",
+  eNumber: "",
+  ePin: "",
 };
 
 
@@ -100,9 +100,9 @@ export const CheckOut = () => {
                 currency: 'NGN',
                 payment_options: 'mobilemoney',
                 customer: {
-                  email: values.field2,
-                  phone_number: values.field3,
-                  name: values.field1,
+                  email: values.email,
+                  phone_number: values.phone,
+                  name: values.name,
                 },
                 customizations: {
                   title: 'Audiophile',
@@ -147,109 +147,109 @@ export const CheckOut = () => {
 
                       <Grid>
                         <div
-                          className={`${errors.field1 && touched.field1 ? "error" : null
+                          className={`${errors.name && touched.name ? "error" : null
                             } form-group`}
                         >
                           <label>Name</label>
 
                           <Field
                             placeholder="Alexei Ward"
-                            name="field1"
+                            name="name"
                             type="text"
                           />
-                          {errors.field1 && touched.field1 ? (
-                            <span>{errors.field1}</span>
+                          {errors.name && touched.name ? (
+                            <span>{errors.name}</span>
                           ) : null}
                         </div>
                         <div
-                          className={`${errors.field2 && touched.field2 ? "error" : null
+                          className={`${errors.email && touched.email ? "error" : null
                             } form-group`}
                         >
                           <label>Email Address</label>
                           <Field
                             placeholder="alexei@mail.com"
-                            name="field2"
+                            name="email"
                             type="email"
                           />
-                          {errors.field2 && touched.field2 ? (
-                            <span>{errors.field2}</span>
+                          {errors.email && touched.email ? (
+                            <span>{errors.email}</span>
                           ) : null}
                         </div>
                       </Grid>
                       <div
-                        className={`${errors.field3 && touched.field3 ? "error" : null
+                        className={`${errors.phone && touched.phone ? "error" : null
                           } form-group`}
                       >
                         <label>Phone Number</label>
                         <Field
                           placeholder="+1 202-555-0136"
-                          name="field3"
+                          name="phone"
                           type="text"
                         />
-                        {errors.field3 && touched.field3 ? (
-                          <span>{errors.field3}</span>
+                        {errors.phone && touched.phone ? (
+                          <span>{errors.phone}</span>
                         ) : null}
                       </div>
 
                       <p>shipping info</p>
                       <div
-                        className={`${errors.field4 && touched.field4 ? "error" : null
+                        className={`${errors.address && touched.address ? "error" : null
                           } form-group`}
                       >
                         <label>Address</label>
                         <Field
                           placeholder="1137 Williams Avenue"
-                          name="field4"
+                          name="address"
                           type="text"
                         />
-                        {errors.field4 && touched.field4 ? (
-                          <span>{errors.field4}</span>
+                        {errors.address && touched.address ? (
+                          <span>{errors.address}</span>
                         ) : null}
                       </div>
                       <Grid>
                         <div
-                          className={`${errors.field5 && touched.field5 ? "error" : null
+                          className={`${errors.zipCode && touched.zipCode ? "error" : null
                             } form-group`}
                         >
                           <label>ZIP Code</label>
                           <Field
                             placeholder="10001"
                             type="text"
-                            name="field5"
+                            name="zipCode"
                           />
-                          {errors.field5 && touched.field5 ? (
-                            <span>{errors.field5}</span>
+                          {errors.zipCode && touched.zipCode ? (
+                            <span>{errors.zipCode}</span>
                           ) : null}
                         </div>
                         <div
-                          className={`${errors.field6 && touched.field6 ? "error" : null
+                          className={`${errors.city && touched.city ? "error" : null
                             } form-group`}
                         >
                           <label>City</label>
                           <Field
                             placeholder="New York"
-                            name="field6"
+                            name="city"
                             type="text"
                           />
-                          {errors.field6 && touched.field6 ? (
-                            <span>{errors.field6}</span>
+                          {errors.city && touched.city ? (
+                            <span>{errors.city}</span>
                           ) : null}
                         </div>
                       </Grid>
 
                       <Grid>
                         <div
-                          className={`${errors.field7 && touched.field7 ? "error" : null
+                          className={`${errors.country && touched.country ? "error" : null
                             } form-group`}
                         >
                           <label>Country</label>
                           <Field
                             placeholder="United States"
-                            name="field7"
+                            name="country"
                             type="text"
                           />
-                          {errors.field7 && touched.field7 ? (
-                            <span>{errors.field7}</span>
+                          {errors.country && touched.country ? (
+                            <span>{errors.country}</span>
                           ) : null}
                         </div>
                       </Grid>
@@ -288,32 +288,32 @@ export const CheckOut = () => {
                       {paymentOption.value === "online-payment" && (
                         <Grid>
                           <div
-                            className={`${errors.field8 && touched.field8 ? "error" : null
+                            className={`${errors.eNumber && touched.eNumber ? "error" : null
                               } form-group`}
                           >
                             <label>e-Money Number</label>
                             <Field
                               placeholder="238521993"
-                              name="field8"
+                              name="eNumber"
                               type="text"
                             />
 
-                            {errors.field8 && touched.field8 ? (
-                              <span>{errors.field8}</span>
+                            {errors.eNumber && touched.eNumber ? (
+                              <span>{errors.eNumber}</span>
                             ) : null}
                           </div>
                           <div
-                            className={`${errors.field9 && touched.field9 ? "error" : null
+                            className={`${errors.ePin && touched.ePin ? "error" : null
                               } form-group`}
                           >
                             <label>e-Money PIN</label>
                             <Field
                               placeholder="6891"
-                              name="field9"
+                              name="ePin"
                               type="text"
                             />
-                            {errors.field9 && touched.field9 ? (
-                              <span>{errors.field9}</span>
+                            {errors.ePin && touched.ePin ? (
+                              <span>{errors.ePin}</span>
                             ) : null}
                           </div>
                         </Grid>

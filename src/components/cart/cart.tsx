@@ -7,6 +7,7 @@ import { useLocalStorageCart } from "../../hooks/useLocalStorageCart";
 import { CartItemIncrementer } from "../CartItemIncrementer";
 import { List } from "../product/list";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 type CartProps = {
   onClose: () => void;
@@ -75,6 +76,9 @@ export const Cart = ({ isOpen, onClose }: CartProps) => {
                 onClick={() => {
                   if (cart && cart.length) {
                     localStorage.removeItem('cart')
+                    
+                    toast.success("Cart updated");
+                    window.dispatchEvent(new Event("localstoragecartupdated"));
                   } else return
                 }}
                   style={{
