@@ -36,7 +36,7 @@ const initialState: FormState = {
 export const CheckOut = () => {
   const navigate = useNavigate();
   const { cart, getTotalPrice } = useLocalStorageCart();
-  const [paymentCompletion, setPaymentCompletion] = useState(true);
+  const [paymentCompletion, setPaymentCompletion] = useState(false);
   const shipping = "50";
   const vat = "1079";
 
@@ -109,7 +109,7 @@ export const CheckOut = () => {
                   description: 'Payment for items in cart',
                   logo: 'https://res.cloudinary.com/dnhtq3hdg/image/upload/v1706716639/foglnzufjxtft4c0ibin.png',
                 },
-
+                redirect_url: 'http://localhost:5173/product/check-out'
               };
               const handleFlutterPayment = useFlutterwave(config);
 
@@ -119,6 +119,7 @@ export const CheckOut = () => {
                     if (response.status === 'successful') {
                       setPaymentCompletion(true)
                       closePaymentModal();
+                      toast.success('Payment successful')
                     } else {
                       toast.error('Payment unsuccessful')
                     }

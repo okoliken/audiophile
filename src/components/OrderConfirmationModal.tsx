@@ -6,7 +6,7 @@ import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react'
 import { useLocalStorageCart } from "../hooks/useLocalStorageCart";
 import Tick from '../assets/tick.svg'
 import { useShortner } from "../hooks/shorten-words";
-
+import { useNavigate } from 'react-router-dom'
 
 type Props = {
   onClose: Dispatch<SetStateAction<boolean>>;
@@ -18,6 +18,7 @@ export const OrderConfirmationModal = ({ onClose, isOpen }: Props) => {
   const body = document.querySelector("body");
   const [moreItems, setMoreItems] = useState(false)
   const { cart } = useLocalStorageCart();
+  const navigate = useNavigate()
 
   const handleOutsideClick = (event: React.MouseEvent) => {
     if (body && !modalRef?.current?.contains(event.target as Node)) {
@@ -106,7 +107,7 @@ export const OrderConfirmationModal = ({ onClose, isOpen }: Props) => {
                   </>
                 )}
 
-                {cart.length > 0 && (
+                {cart.length > 1 && (
                   <div className="border-b">
                     <p onClick={() => setMoreItems((prev) => !prev)}>and {cart.length - 1} other item(s)</p>
                   </div>
@@ -120,7 +121,7 @@ export const OrderConfirmationModal = ({ onClose, isOpen }: Props) => {
             </Grid>
 
             <div className="actions">
-              <Button size="100%" buttonType={"primary"}>BACK TO HOME</Button>
+              <Button onClick={() => navigate('/')} size="100%" buttonType={"primary"}>BACK TO HOME</Button>
             </div>
           </OrderConfirmation>
         </motion.div>
