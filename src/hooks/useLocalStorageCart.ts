@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback  } from "react";
+import { useState, useEffect, useCallback, useMemo  } from "react";
 import { ProductPrototype } from "../utils/types";
 import toast from "react-hot-toast";
 
@@ -108,7 +108,9 @@ export const useLocalStorageCart = () => {
     );
   }, [cart]);
 
-  
+  const getTotalItems = useMemo(() => {
+    return cart.reduce((total, currentItem) => total + currentItem.quantity, 0);
+  }, [cart]);
 
   return {
     addToCart,
@@ -116,6 +118,7 @@ export const useLocalStorageCart = () => {
     decreaseQuantity,
     getTotalQuantityForProduct,
     cart,
-    getTotalPrice
+    getTotalPrice,
+    getTotalItems
   };
 };

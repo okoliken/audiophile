@@ -7,6 +7,7 @@ import { useLocalStorageCart } from "../hooks/useLocalStorageCart";
 import Tick from '../assets/tick.svg'
 import { useShortner } from "../hooks/shorten-words";
 import { useNavigate } from 'react-router-dom'
+import { formatNumberWithCommas } from '../utils'
 
 type Props = {
   onClose: Dispatch<SetStateAction<boolean>>;
@@ -14,18 +15,9 @@ type Props = {
 
 export const OrderConfirmationModal = ({ onClose }: Props) => {
   const [moreItems, setMoreItems] = useState(false)
-  const { cart } = useLocalStorageCart();
-  const navigate = useNavigate()
-
-
-
-  function formatNumberWithCommas(number: number) {
-    return <>{number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</>;
-  }
-
+  const { cart, getTotalPrice } = useLocalStorageCart();
   const { shortenProductName } = useShortner()
-
-  
+  const navigate = useNavigate()
 
   return (
     <>
@@ -50,7 +42,6 @@ export const OrderConfirmationModal = ({ onClose }: Props) => {
 
               <p>You will receive an email confirmation shortly.</p>
             </div>
-
 
             <Grid noGap={true} style={{ margin: "25px 0px 45px 0" }}>
               <div className="products-purchased">
@@ -98,7 +89,7 @@ export const OrderConfirmationModal = ({ onClose }: Props) => {
               </div>
               <div className="total-cost">
                 <h3>GRAND TOTAL</h3>
-                <h4>$ 5,446</h4>
+                <h4>$ {formatNumberWithCommas(getTotalPrice() + 50 + 1079)}</h4>
               </div>
             </Grid>
 

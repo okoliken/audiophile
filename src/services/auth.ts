@@ -33,24 +33,24 @@ export const useAuth = () => {
 
     if (data.user) {
       navigate(redirect || "/product/check-out");
-    } 
-    
+    }
+
 
     else if (error?.message) {
       toast.error(error.message);
     }
   };
-  
+
   const signInWithGoogle = async () => {
-    const {data, error} = await supabase.auth.signInWithOAuth({
-      provider:'google'
+    const { data, error } = await supabase.auth.signInWithOAuth({
+      provider: 'google'
     })
-  
-  
+
+
     if (data.provider) {
       navigate(redirect || "/product/check-out");
-    } 
-    
+    }
+
 
     else if (error?.message) {
       toast.error(error.message);

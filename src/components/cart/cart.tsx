@@ -1,6 +1,6 @@
 import { CartItem, CartOverlay } from "../../styles/styles.styled";
 import { Button } from "../button/Button";
-import { useRef, useEffect, useMemo, useCallback } from "react";
+import { useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import CartIcon from "../../assets/cart.svg";
 import { useLocalStorageCart } from "../../hooks/useLocalStorageCart";
@@ -8,6 +8,7 @@ import { CartItemIncrementer } from "../CartItemIncrementer";
 import { List } from "../product/list";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import { formatNumberWithCommas } from '../../utils'
 
 type CartProps = {
   onClose: () => void;
@@ -19,7 +20,7 @@ export const Cart = ({ isOpen, onClose }: CartProps) => {
   const body = document.querySelector("body");
   const navigate = useNavigate();
 
-  const { cart, increaseQuantity, decreaseQuantity } = useLocalStorageCart();
+  const { cart, increaseQuantity, decreaseQuantity, getTotalPrice, getTotalItems } = useLocalStorageCart();
 
   const handleOutsideClick = (event: React.MouseEvent) => {
     if (body && !modalRef?.current?.contains(event.target as Node)) {
@@ -37,22 +38,6 @@ export const Cart = ({ isOpen, onClose }: CartProps) => {
       };
     }
   }, [isOpen, body]);
-
-  const getTotalItems = useMemo(() => {
-    return cart.reduce((total, currentItem) => total + currentItem.quantity, 0);
-  }, [cart]);
-
-  const getTotalPrice = useCallback((): number => {
-    return cart.reduce(
-      (total, productPrices) =>
-        total + Number(productPrices.price) * productPrices.quantity,
-      0
-    );
-  }, [cart]);
-
-  function formatNumberWithCommas(number: number) {
-    return <>{number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</>;
-  }
 
   return (
     <>

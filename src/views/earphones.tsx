@@ -5,13 +5,11 @@ import {
   MarginBox,
   ReOrderProducts,
 } from "../styles/reuseables.styled";
-
 import { ProductContext } from "../context";
 import { NavLink } from "react-router-dom";
 import { ProductShowCase } from "../components/product/product-showcase";
 import { Button } from "../components/button/Button";
 import { useContext } from "react";
-
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 export const Earphones = () => {

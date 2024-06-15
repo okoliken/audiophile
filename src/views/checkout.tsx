@@ -44,11 +44,10 @@ export const CheckOut = () => {
     name: "",
     value: "",
   });
+  
   const selectPaymentOption = (val: Options) => {
     setPaymentOption(val);
   };
-
-
 
   const paymentOptions = [
     {
@@ -66,10 +65,8 @@ export const CheckOut = () => {
   }
 
   function formatNumberWithCommas(number: number) {
-    return <>{number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</>;
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
-
-
 
   useEffect(() => {
     const originalBackgroundColor = document.body.style.backgroundColor;
@@ -79,7 +76,6 @@ export const CheckOut = () => {
       document.body.style.backgroundColor = originalBackgroundColor;
     };
   }, [])
-
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -96,13 +92,11 @@ export const CheckOut = () => {
   return (
     <>
       <HeroSection style={{ height: "110px" }}></HeroSection>
-
       <Container>
         <div className="padded">
           <p onClick={handleBack} className="go-back">
             Go Back
           </p>
-
           <Formik
             initialValues={initialState}
             onSubmit={(values, actions) => {
@@ -143,11 +137,9 @@ export const CheckOut = () => {
                 });
               } else {
                 setPaymentCompletion(true)
-                // Handle other payment methods or actions
                 actions.resetForm();
               }
             }}
-
             validationSchema={FormSchema}
           >
             {({ errors, touched }) => (
@@ -156,16 +148,13 @@ export const CheckOut = () => {
                   <Card className="cc-8">
                     <div>
                       <h1>CHECKOUT</h1>
-
                       <p>billing details</p>
-
                       <Grid>
                         <div
                           className={`${errors.name && touched.name ? "error" : null
                             } form-group`}
                         >
                           <label>Name</label>
-
                           <Field
                             placeholder="Alexei Ward"
                             name="name"
@@ -250,7 +239,6 @@ export const CheckOut = () => {
                           ) : null}
                         </div>
                       </Grid>
-
                       <Grid>
                         <div
                           className={`${errors.country && touched.country ? "error" : null
@@ -267,7 +255,6 @@ export const CheckOut = () => {
                           ) : null}
                         </div>
                       </Grid>
-
                       <p>Payment details</p>
                       <Grid>
                         <div className="form-group">
@@ -298,7 +285,6 @@ export const CheckOut = () => {
                           ))}
                         </div>
                       </Grid>
-
                       {paymentOption.value === "online-payment" && (
                         <Grid>
                           <div
@@ -333,7 +319,6 @@ export const CheckOut = () => {
                         </Grid>
                       )}
                     </div>
-
                     {paymentOption.value === "cash" && (
                       <div className="cod">
                         <div>
@@ -363,7 +348,6 @@ export const CheckOut = () => {
                           ))}
                         </div>
                       )}
-
                       <div className="product-details">
                         <FlexItem margin="8px" justify="between">
                           <h4 className="labels">TOTAL</h4>
