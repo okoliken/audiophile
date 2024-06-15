@@ -10,32 +10,14 @@ import { useNavigate } from 'react-router-dom'
 
 type Props = {
   onClose: Dispatch<SetStateAction<boolean>>;
-  isOpen: boolean;
 };
 
-export const OrderConfirmationModal = ({ onClose, isOpen }: Props) => {
-  const modalRef = useRef<HTMLDivElement>(null);
-  const body = document.querySelector("body");
+export const OrderConfirmationModal = ({ onClose }: Props) => {
   const [moreItems, setMoreItems] = useState(false)
   const { cart } = useLocalStorageCart();
   const navigate = useNavigate()
 
-  const handleOutsideClick = (event: React.MouseEvent) => {
-    if (body && !modalRef?.current?.contains(event.target as Node)) {
-      onClose(false);
-      body.style.overflow = "";
-    }
-  };
 
-  useEffect(() => {
-    if (isOpen && body) {
-      body.style.overflow = "hidden";
-
-      return () => {
-        body.style.overflow = "";
-      };
-    }
-  }, [isOpen, body]);
 
   function formatNumberWithCommas(number: number) {
     return <>{number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</>;
@@ -43,12 +25,12 @@ export const OrderConfirmationModal = ({ onClose, isOpen }: Props) => {
 
   const { shortenProductName } = useShortner()
 
+  
 
   return (
     <>
-      <Overlay onClick={handleOutsideClick}>
+      <Overlay>
         <motion.div
-          ref={modalRef}
           className={"animate__motion_div"}
           style={{ width: "100%", maxWidth: "500px", margin: "0 20px" }}
           initial={{ scale: 0.4 }}
@@ -121,7 +103,10 @@ export const OrderConfirmationModal = ({ onClose, isOpen }: Props) => {
             </Grid>
 
             <div className="actions">
-              <Button onClick={() => navigate('/')} size="100%" buttonType={"primary"}>BACK TO HOME</Button>
+              <Button onClick={() =>{
+                onClose(false);
+                navigate('/')
+              }} size="100%" buttonType={"primary"}>BACK TO HOME</Button>
             </div>
           </OrderConfirmation>
         </motion.div>

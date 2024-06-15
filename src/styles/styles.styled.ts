@@ -28,7 +28,7 @@ export const Flex = styled.div`
 `;
 
 export const HeroBanner = styled.div`
-  background-color: #101010;
+  background-color: #191919;
   position: relative;
   min-height: 100%;
   height: 700px;
@@ -87,7 +87,7 @@ export const HeroBanner = styled.div`
     }
   }
   @media (${device.mobileS}) {
-    background-color: #101010;
+    background-color: #191919;
     position: relative;
     min-height: 100%;
     height: 700px;
@@ -142,7 +142,7 @@ export const HeroBanner = styled.div`
     }
   }
   @media (${device.tablet}) {
-    background-color: #101010;
+    background-color: #191919;
     position: relative;
     min-height: 100%;
     height: 700px;
@@ -150,7 +150,7 @@ export const HeroBanner = styled.div`
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: center center;
-
+    border-radius: 0px 0px 8px 8px;
     .hero__Text {
       padding-top: 240px;
       display: flex;
@@ -214,10 +214,15 @@ export const HeroBanner = styled.div`
     }
   }
 
+  @media (${device.laptopL}) {
+    background-position: center;
+    height: 820px;
+  }
   @media (${device.desktop}) {
     background-position: center;
   }
 `;
+
 
 export const SubSection = styled.div`
   display: flex;
@@ -364,7 +369,7 @@ export const SubSection = styled.div`
     justify-content: center;
     flex-direction: row;
     margin: 105px 0;
-    min-height: 100vh;
+    min-height: 100%;
     gap: 0 84px;
     padding: 0px;
     .subsection__headset_xy_image-mobile {
@@ -544,20 +549,21 @@ export const SpeakerAdvert = styled.div`
     height: 560px;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    /* justify-content: space-around; */
+    gap: 0 75px;
     flex-direction: row;
     margin: 0px;
     background-image: url(${Ring});
     background-repeat: no-repeat;
-    background-size: 100%;
-    background-position: top right;
+    background-size: 75%;
+    background-position: left;
     .img-m-t {
       display: none;
     }
 
     .img-d {
       display: block;
-      height: 490px;
+      height: 493px;
       object-fit: contain;
       transform: translateY(35px);
     }

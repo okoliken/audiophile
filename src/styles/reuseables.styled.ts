@@ -197,8 +197,8 @@ export const ProductDisplay = styled.div`
     }
   }
   @media (${device.laptop}) {
-    min-height: 100vh;
-    margin: 15px 0px;
+    min-height: 100%;
+    margin: 150px 0px;
     height: 100%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);

@@ -78,7 +78,20 @@ export const CheckOut = () => {
     return () => {
       document.body.style.backgroundColor = originalBackgroundColor;
     };
-  }, []);
+  }, [])
+
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const status = urlParams.get("status");
+    const txRef = urlParams.get("tx_ref");
+    const transactionId = urlParams.get("transaction_id");
+
+    if (status && txRef && transactionId) {
+      const newUrl = `${window.location.origin}${window.location.pathname}?status=${status}&tx_ref=${txRef}&transaction_id=${transactionId}`;
+      window.history.pushState({ path: newUrl }, '', newUrl);
+    }
+  }, [])
 
   return (
     <>
@@ -94,11 +107,11 @@ export const CheckOut = () => {
             initialValues={initialState}
             onSubmit={(values, actions) => {
               const config = {
-                public_key: 'FLWPUBK_TEST-bec91ba01da8e6bb31ff09ed6fe0d8be-X',
+                public_key: import.meta.env.VITE_PUBLIC_KEY,
                 tx_ref: String(Date.now()),
-                amount: 100,
+                amount: 10,
                 currency: 'NGN',
-                payment_options: 'mobilemoney',
+                payment_options: 'card',
                 customer: {
                   email: values.email,
                   phone_number: values.phone,
@@ -109,7 +122,6 @@ export const CheckOut = () => {
                   description: 'Payment for items in cart',
                   logo: 'https://res.cloudinary.com/dnhtq3hdg/image/upload/v1706716639/foglnzufjxtft4c0ibin.png',
                 },
-                redirect_url: 'http://localhost:5173/product/check-out'
               };
               const handleFlutterPayment = useFlutterwave(config);
 
@@ -117,6 +129,7 @@ export const CheckOut = () => {
                 handleFlutterPayment({
                   callback: (response) => {
                     if (response.status === 'successful') {
+                      actions.resetForm();
                       setPaymentCompletion(true)
                       closePaymentModal();
                       toast.success('Payment successful')
@@ -382,7 +395,7 @@ export const CheckOut = () => {
             )}
           </Formik>
           {paymentCompletion && (
-            <OrderConfirmationModal isOpen={paymentCompletion} onClose={setPaymentCompletion} />
+            <OrderConfirmationModal onClose={setPaymentCompletion} />
           )}
         </div>
       </Container>
