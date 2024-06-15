@@ -2,7 +2,7 @@ import { Overlay, OrderConfirmation } from "../styles/styles.styled";
 import { motion } from "framer-motion";
 import { Button } from './button/Button';
 import { FlexItem, Grid } from "../styles/reuseables.styled";
-import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react'
+import { Dispatch, SetStateAction, useState } from 'react'
 import { useLocalStorageCart } from "../hooks/useLocalStorageCart";
 import Tick from '../assets/tick.svg'
 import { useShortner } from "../hooks/shorten-words";
