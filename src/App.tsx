@@ -4,7 +4,6 @@ import { Home } from "./views/Home";
 import { HeadPhones } from "./views/head-phones";
 import { Speakers } from "./views/speakers";
 import { Layout } from "./layouts/Layout";
-// import  {AuthLayout} from './layouts/AuthLayout'
 import { AuthGuard } from "./components/AuthGaurd";
 import { RouteLoadingBar } from "./components/RouteLoadingBar";
 import { Earphones } from "./views/earphones";

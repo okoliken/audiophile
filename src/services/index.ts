@@ -48,7 +48,6 @@ export const getSingleProduct = async (
   slug: string | undefined
 ): Promise<SupaBaseProductResponse> => {
   
-  
   const data = await supabase
     .from(String(tName))
     .select("*")

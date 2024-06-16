@@ -17,11 +17,15 @@ export const BottomDrawer = ({ isOpen, onClose, children }: DrawerProps) => {
 
   return (
     <>
-      <Backdrop isOpen={isOpen} onClick={onClose} />
-      <StyledDrawer isOpen={isOpen}>
-        <DrawerHandle />
-        <DrawerContent>{children}</DrawerContent>
-      </StyledDrawer>
+      {isOpen && (
+        <>
+          <Backdrop isOpen={isOpen} onClick={onClose} />
+          <StyledDrawer isOpen={isOpen}>
+            <DrawerHandle />
+            <DrawerContent>{children}</DrawerContent>
+          </StyledDrawer>
+        </>
+      )}
     </>
   );
 };

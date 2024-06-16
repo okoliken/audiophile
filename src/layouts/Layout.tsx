@@ -9,11 +9,7 @@ import { Container, SubSection } from "../styles/styles.styled";
 
 export const Layout = ({ children }: React.PropsWithChildren) => {
   const location = useLocation();
-
-
-
   const isCheckout = location.pathname !== "/product/check-out";
-
   return (
     <>
       <Navbar />
@@ -37,6 +33,7 @@ export const Layout = ({ children }: React.PropsWithChildren) => {
               </p>
             </div>
             <img
+              style={{width:'100%'}}
               className="subsection__headset_xy_image-mobile"
               src={HeadSet}
               alt="headset"

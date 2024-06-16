@@ -240,7 +240,7 @@ export const Footer = styled.footer`
           svg {
             cursor: pointer;
             transition: all 0.2s ease-in;
-            :hover {
+            &:hover {
               fill: rgba(216, 125, 74, 1);
             }
           }

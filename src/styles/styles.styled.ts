@@ -30,10 +30,10 @@ export const Flex = styled.div`
 export const HeroBanner = styled.div`
   background-color: #191919;
   position: relative;
-  min-height: 100%;
-  height: 700px;
+  min-height: 700px;
+  height: 100%;
   background-image: url(${BannerHeroMobile});
-  background-size: 400px;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
 
@@ -64,7 +64,6 @@ export const HeroBanner = styled.div`
 
     h1 {
       color: #fff;
-
       text-align: center;
       font-size: 36px;
       font-style: normal;
@@ -76,7 +75,6 @@ export const HeroBanner = styled.div`
 
     p {
       color: #fff;
-
       text-align: center;
       opacity: 0.75;
       font-size: 15px;
@@ -92,7 +90,7 @@ export const HeroBanner = styled.div`
     min-height: 100%;
     height: 700px;
     background-image: url(${BannerHeroMobile});
-    background-size: 400px;
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
 
@@ -473,8 +471,8 @@ export const SpeakerAdvert = styled.div`
   padding: 10px;
   background-image: url(${Ring});
   background-repeat: no-repeat;
-  background-size: 100%;
-  background-position: top;
+  background-size: cover;
+  background-position: top center;
 
   .img-m-t {
     display: block;
@@ -713,6 +711,8 @@ export const XZ7PRODUCT = styled.div`
     }
     img.bit-tablet {
       display: block;
+      object-fit: cover;
+      width: 100%;
     }
     img.bit-desktop {
       display: none;
@@ -753,11 +753,14 @@ export const EarPodsCTA = styled.div`
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   padding: 15px;
+  width: 100%;
+  
   div.cta-container {
     border-radius: 8px;
     background: #f1f1f1;
+    margin-top: 20px;
     width: 100%;
-    height: 100%;
+    height: 200px;
     padding: 30px;
 
     .cta-action {
@@ -787,7 +790,8 @@ export const EarPodsCTA = styled.div`
       border-radius: 8px;
       background: #f1f1f1;
       width: 100%;
-      height: 100%;
+      height: 200px;
+      margin-top: 20px;
       padding: 30px;
 
       .cta-action {
@@ -822,6 +826,7 @@ export const EarPodsCTA = styled.div`
       background: #f1f1f1;
       max-width: 100%;
       width: 100%;
+      margin-top: 0px;
       height: 100%;
       padding: 30px;
 

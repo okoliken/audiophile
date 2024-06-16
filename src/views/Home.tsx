@@ -63,7 +63,7 @@ export const Home = () => {
 
       <Container>
         <XZ7PRODUCT>
-          <div>
+          <div style={{width:'100%'}}>
             <div>
               <div className="call-action">
                 <h3>ZX7 SPEAKER</h3>
