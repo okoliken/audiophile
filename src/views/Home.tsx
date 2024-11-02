@@ -55,7 +55,7 @@ export const Home = () => {
               truly remarkable sound.
             </p>
             <NavLink to="/product/SPEAKERS/zx9-speaker">
-              <Button buttonType="dark">See Product</Button>
+              <Button buttonType="secondary">See Product</Button>
             </NavLink>
           </div>
         </SpeakerAdvert>
@@ -68,7 +68,7 @@ export const Home = () => {
               <div className="call-action">
                 <h3>ZX7 SPEAKER</h3>
                   <NavLink to={`/product/SPEAKERS/zx9-speaker`}>
-                    <Button variant="outline" buttonType="dark">
+                    <Button variant="outline" buttonType="transparent">
                       See Product
                     </Button>
                   </NavLink>
@@ -104,7 +104,7 @@ export const Home = () => {
             <div className="cta-action">
               <h3>YX1 EARPHONES</h3>
               <NavLink to={`/product/EARPHONES/yx1-wireless-EARPHONES`}>
-              <Button variant="outline" buttonType="dark">
+              <Button variant="outline" buttonType="transparent">
                 See Product
               </Button>
               </NavLink>

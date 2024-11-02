@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
+@layer reset, base, tokens, recipes, utilities;
+
 * {
   margin: 0;
   padding: 0;
@@ -7,10 +9,7 @@
   text-decoration: none;
 }
 
-html {
-  scroll-behavior: smooth;
-  scroll-snap-type: mandatory;
-}
+
 :root {
   --orange-brown: #d87d4a;
   --black: #101010;
@@ -21,17 +20,19 @@ html {
   --black: #000000;
 }
 
-body {
-  font-family: "Manrope", sans-serif;
-  font-weight: 400;
+html, body{
+  background-color: #fff;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 400; 
+  scroll-snap-type: mandatory;
+  scroll-behavior: smooth;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  scroll-snap-type: mandatory;
-  background-color: #fff;
+  margin: 0;
+  padding: 0; 
 }
-
 .form-group {
   margin: 12px 0px;
   position: relative;
